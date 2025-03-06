@@ -1,0 +1,97 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Parent = player:WaitForChild("PlayerGui")
+
+-- Eye Frame (Main Container)
+local eyeFrame = Instance.new("Frame")
+eyeFrame.Parent = gui
+eyeFrame.Size = UDim2.new(0.4, 0, 0.4, 0) -- Adjust size
+eyeFrame.Position = UDim2.new(0.3, 0, 1, 0) -- Start off-screen (bottom)
+eyeFrame.BackgroundTransparency = 1
+
+-- Eye Shape
+local eye = Instance.new("ImageLabel")
+eye.Parent = eyeFrame
+eye.Size = UDim2.new(1, 0, 1, 0)
+eye.Position = UDim2.new(0, 0, 0, 0)
+eye.BackgroundTransparency = 1
+eye.Image = "http://www.roblox.com/asset/?id=7231140025" -- Eye Shape
+eye.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+-- Black Fill (To remove see-through effect)
+local blackFill = Instance.new("Frame")
+blackFill.Parent = eyeFrame
+blackFill.Size = UDim2.new(0.6, 0, 0.6, 0) -- Covers inside of the eye
+blackFill.Position = UDim2.new(0.2, 0, 0.2, 0) -- Centered in the eye
+blackFill.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+local blackFillCorner = Instance.new("UICorner", blackFill)
+blackFillCorner.CornerRadius = UDim.new(1, 0) -- Makes it a circle
+
+-- Left Cover Circle
+local leftCover = Instance.new("Frame")
+leftCover.Parent = eyeFrame
+leftCover.Size = UDim2.new(0.25, 0, 0.5, 0) -- Adjust size to cover left gap
+leftCover.Position = UDim2.new(0.095, 0, 0.25, 0) -- Place on the left
+leftCover.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+local leftCorner = Instance.new("UICorner", leftCover)
+leftCorner.CornerRadius = UDim.new(1, 0) -- Round it
+
+-- Right Cover Circle
+local rightCover = Instance.new("Frame")
+rightCover.Parent = eyeFrame
+rightCover.Size = UDim2.new(0.25, 0, 0.5, 0) -- Adjust size to cover right gap
+rightCover.Position = UDim2.new(0.655, 0, 0.25, 0) -- Place on the right
+rightCover.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+local rightCorner = Instance.new("UICorner", rightCover)
+rightCorner.CornerRadius = UDim.new(1, 0) -- Round it
+
+-- **Bigger Pupil (1.5x)**
+local pupil = Instance.new("ImageLabel")
+pupil.Parent = eyeFrame
+pupil.Size = UDim2.new(0.3, 0, 0.3, 0) -- **Increased Size (1.5x)**
+pupil.Position = UDim2.new(0.35, 0, 0.35, 0) -- **Recentered**
+pupil.BackgroundTransparency = 1
+pupil.Image = "http://www.roblox.com/asset/?id=88058296255203" -- Pupil
+pupil.ZIndex = 10 -- Ensures it is above the black fill
+
+-- TweenService for Smooth Animation
+local tweenService = game:GetService("TweenService")
+
+-- Move Eye to the Middle
+local moveTween = tweenService:Create(eyeFrame, TweenInfo.new(1.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2.new(0.3, 0, 0.3, 0)})
+moveTween:Play()
+
+-- Function to Move Pupil (Wider Distances)
+local function movePupil()
+    local positions = {
+        UDim2.new(0.15, 0, 0.4, 0), -- Far Left
+        UDim2.new(0.65, 0, 0.4, 0), -- Far Right
+        UDim2.new(0.4, 0, 0.15, 0), -- High Up
+        UDim2.new(0.4, 0, 0.65, 0), -- Low Down
+        UDim2.new(0.2, 0, 0.2, 0), -- Upper Left
+        UDim2.new(0.6, 0, 0.2, 0), -- Upper Right
+        UDim2.new(0.2, 0, 0.6, 0), -- Lower Left
+        UDim2.new(0.55, 0, 0.55, 0), -- Lower Right
+    }
+
+    for i = 1, 2 do -- Move left then right first
+        local pupilTween = tweenService:Create(pupil, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = positions[i]})
+        pupilTween:Play()
+        wait(1)
+    end
+
+    while true do
+        local randomPos = positions[math.random(3, #positions)]
+        local pupilTween = tweenService:Create(pupil, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = randomPos})
+        pupilTween:Play()
+        wait(math.random(0.5, 1))
+    end
+end
+
+-- Start Pupil Movement
+task.spawn(movePupil)
+
+-- Destroy GUI After 10 Seconds
+task.delay(50, function()
+    gui:Destroy()
+end)
