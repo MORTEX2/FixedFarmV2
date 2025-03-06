@@ -17,10 +17,10 @@ local function hideErrorMessage()
         if errorGui and errorGui:FindFirstChild("messages") then
             local errorMsg = errorGui.messages:FindFirstChild("Error")
             if errorMsg then
-                errorMsg.Visible = false -- Hide the error message instead of destroying it
+            --    errorMsg.Visible = false -- Hide the error message instead of destroying it
             end
         end
-        task.wait(0.05) -- Slight delay to prevent performance issues
+        task.wait(0.2) -- Slight delay to prevent performance issues
     end
 end
 
