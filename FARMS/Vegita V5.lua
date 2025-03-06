@@ -1,1 +1,1181 @@
-repeat wait();until game:GetService("Players").LocalPlayer.Character repeat wait();until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") repeat wait();until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units") wait(1340 -(178 + 1157) );task.spawn(function() end);local function v0() while true do local v98=0 + 0 ;local v99;while true do if (v98==(0 -0)) then v99=game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MessageGui");if (v99 and v99:FindFirstChild("messages")) then local v193=1262 -(1091 + 171) ;local v194;while true do if (0==v193) then v194=v99.messages:FindFirstChild("Error");if v194 then v194.Visible=false;end break;end end end v98=1;end if (v98==(1 + 0)) then task.wait(0.05 -0 );break;end end end end task.spawn(v0);local v1=game:GetService("VirtualUser");game:GetService("Players").LocalPlayer.Idled:Connect(function() v1:Button2Down(Vector2.new(0 -0 ,374 -(123 + 251) ),workspace.CurrentCamera.CFrame);wait(1);v1:Button2Up(Vector2.new(0 -0 ,698 -(208 + 490) ),workspace.CurrentCamera.CFrame);end);local v2=game:GetService("ReplicatedStorage");local v3=game:GetService("Players");local v4=v3.LocalPlayer;local v5=game:GetService("VirtualInputManager");local v6=1;local function v7() local v24=0 + 0 ;local v25;while true do if (v24==(1 + 0)) then return v25;end if (v24==(836 -(660 + 176))) then v25=workspace._BASES.pve.LANES:GetChildren();table.sort(v25,function(v154,v155) return tonumber(v154.Name)<tonumber(v155.Name) ;end);v24=1 + 0 ;end end end local v8=v7();local function v9() local v26={};local function v27(v100) for v133,v134 in pairs(v100:GetChildren()) do if (v134:IsA("BasePart") and v134.Name:match("^80085%d+$")) then table.insert(v26,v134);elseif (v134:IsA("Model") or v134:IsA("Folder")) then v27(v134);end end end v27(workspace._terrain.hill);table.sort(v26,function(v101,v102) return tonumber(v101.Name:match("%d+"))<tonumber(v102.Name:match("%d+")) ;end);return v26;end local function v10(v28,v29) local v30=v8[v6];v6=(v6% #v8) + (203 -(14 + 188)) ;if (v28==(676 -(534 + 141))) then local v135=v9();if ( #v135==(0 + 0)) then return nil;end local v136=1 + 0 ;local v137=math.floor( #v135 * (0.4 + 0) );if (v29==(3 -1)) then local v156=0 -0 ;while true do if (v156==(0 -0)) then v136=v137 + 1 + 0 ;v137=v136 + math.floor( #v135 * 0.3 ) ;break;end end elseif (v29==3) then local v195=0;while true do if (v195==(0 + 0)) then v136=v137 + (397 -(115 + 281)) ;v137= #v135;break;end end end local v138=v135[math.random(v136,v137)];if v138 then local v157=v138.Position + Vector3.new(math.random( -(4 -2),2 + 0 ),4 -2 ,math.random( -(7 -5),869 -(550 + 317) )) ;return v157;end end local v31={};for v103,v104 in pairs(v30:GetChildren()) do if tonumber(v104.Name) then table.insert(v31,v104);end end table.sort(v31,function(v105,v106) return tonumber(v105.Name)<tonumber(v106.Name) ;end);local v32= #v31;if (v32==(0 -0)) then return nil;end local v33=1;local v34=math.floor(v32 * (0.4 -0) );if (v29==(5 -3)) then v33=v34 + (286 -(134 + 151)) ;v34=v33 + math.floor(v32 * 0.3 ) ;elseif (v29==(1668 -(970 + 695))) then local v158=0;while true do if (v158==(0 -0)) then v33=v34 + 1 ;v34=v32;break;end end end local v35=v31[math.random(v33,v34)];return (v35 and (v35.Position + Vector3.new(math.random( -(1995 -(582 + 1408)),17 -12 ),0,math.random( -5,5)))) or nil ;end local function v11() local v36=game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MessageGui");if (v36 and v36:FindFirstChild("messages")) then local v139=v36.messages:FindFirstChild("Error");if v139 then v139:Destroy();end end end local function v12(v37) local v38=0 -0 ;local v39;local v40;local v41;while true do if (v38==3) then if tonumber(v37) then v37=tostring((3017888 -2217038) + tonumber(v37) );end for v159,v160 in pairs(v40) do if (v160:IsA("Model") and ((v160.Name==tostring(v37)) or v160.Name:lower():find("^bulma%d+$"))) then local v196=1824 -(1195 + 629) ;while true do if (v196==0) then if  not v41(v160) then local v238={[1]=v160};game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("upgrade_unit_ingame"):InvokeServer(unpack(v238));wait(0.5 -0 );v11();end return;end end end end break;end if ((242 -(187 + 54))==v38) then if workspace._DATA.GameFinished.Value then return;end v41=nil;v38=782 -(162 + 618) ;end if (v38==0) then v39=workspace:WaitForChild("_UNITS");v40=v39:GetChildren();v38=1;end if (v38==2) then function v41(v161) local v162=0;local v163;while true do if (v162==(1 + 0)) then return false;end if ((0 + 0)==v162) then v163=v161:FindFirstChild("_stats");if v163 then local v226=0;local v227;local v228;while true do if (v226==0) then v227=v163:FindFirstChild("max_upgrade");v228=v163:FindFirstChild("upgrade");v226=1 -0 ;end if (v226==(1 -0)) then if (v227 and v228 and (v227.Value==v228.Value)) then return true;end break;end end end v162=1;end end end if (v37==nil) then local v179=0 + 0 ;while true do if (v179==(1636 -(1373 + 263))) then for v229,v230 in pairs(v40) do if (v230:IsA("Model") and  not v230.Name:lower():find("^ceo%d+$")) then if  not v41(v230) then local v241={[1]=v230};game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("upgrade_unit_ingame"):InvokeServer(unpack(v241));wait(0.05);v11();end end end return;end end end v38=1003 -(451 + 549) ;end end end local function v13() local v42=0 + 0 ;local v43;local v44;local v45;local v46;local v47;while true do if (v42==0) then v43=game.Players.LocalPlayer;v44=workspace:WaitForChild("_UNITS");v42=1 -0 ;end if (v42==3) then for v164,v165 in pairs(v44:GetChildren()) do if (v165:IsA("Model") and v165:FindFirstChild("_stats")) then local v197=v165:FindFirstChild("_stats");local v198=v197:FindFirstChild("player");if (v198 and (v198.Value==v43)) then local v219=0 -0 ;local v220;while true do if (v219==1) then if v220:find("speedwagon") then v165.Name="ceo"   .. v46 ;v46=v46 + (1385 -(746 + 638)) ;elseif v220:find("bulma") then local v245=0;while true do if (v245==(0 + 0)) then v165.Name="bulma"   .. v47 ;v47=v47 + (1 -0) ;break;end end else v165.Name=tostring(v45);v45=v45 + (342 -(218 + 123)) ;end break;end if (v219==(1581 -(1535 + 46))) then v220=v165.Name:lower();if (v220:find("^ceo%d+$") or v220:find("^bulma%d+$") or tonumber(v165.Name)) then continue;end v219=1 + 0 ;end end end end end break;end if (v42==2) then v47=43 + 250 ;for v166,v167 in pairs(v44:GetChildren()) do if (v167:IsA("Model") and v167:FindFirstChild("_stats")) then local v199=v167:FindFirstChild("_stats");local v200=v199:FindFirstChild("player");if (v200 and (v200.Value==v43)) then local v221=0;local v222;while true do if (v221==0) then v222=v167.Name:lower();if v222:find("^ceo%d+$") then local v243=560 -(306 + 254) ;local v244;while true do if (v243==(0 + 0)) then v244=tonumber(v167.Name:match("%d+"));if (v244 and (v244>=v46)) then v46=v244 + 1 ;end break;end end elseif v222:find("^bulma%d+$") then local v247=tonumber(v167.Name:match("%d+"));if (v247 and (v247>=v47)) then v47=v247 + (1 -0) ;end elseif tonumber(v167.Name) then local v248=0;local v249;while true do if (v248==(1467 -(899 + 568))) then v249=tonumber(v167.Name);if (v249 and (v249>=v45)) then v45=v249 + 1 + 0 ;end break;end end end break;end end end end end v42=7 -4 ;end if (v42==(604 -(268 + 335))) then v45=801141 -(60 + 230) ;v46=573 -(426 + 146) ;v42=2;end end end local function v14() local v48=v4.PlayerGui:FindFirstChild("MessageGui");if (v48 and v48:FindFirstChild("messages")) then local v140=v48.messages:FindFirstChild("Error");if v140 then local v168=0 + 0 ;local v169;while true do if (v168==(1456 -(282 + 1174))) then v169=v140:FindFirstChild("Tex");if v169 then local v231=811 -(569 + 242) ;local v232;while true do if ((2 -1)==v231) then return v232;end if (v231==0) then v232=v169.Text;v140:Destroy();v231=1 + 0 ;end end end break;end end end end return nil;end local function v15(v49,v50) local v51=nil;local v52={};if workspace._DATA.GameFinished.Value then return;end for v107=1,1030 -(706 + 318)  do local v108=0;local v109;local v110;while true do if (v108==0) then v109=_G["unit_id"   .. v107 ];v110=_G["unit_stat"   .. v107 ];v108=1;end if (v108==(1252 -(721 + 530))) then if (v109 and (v109~="")) then if (v49==0) then if (v110==1) then table.insert(v52,{slot=v107,id=v109,stat=v110});elseif (v110==0) then table.insert(v52,{slot=v107,id=v109,stat=v110});end elseif ((v49==(1296 -(945 + 326))) and (v110==25)) then table.insert(v52,{slot=v107,id=v109,stat=v110});elseif ((v49==(64 -38)) and (v110==26)) then table.insert(v52,{slot=v107,id=v109,stat=v110});end end break;end end end table.sort(v52,function(v111,v112) return v111.stat>v112.stat ;end);if ( #v52==0) then return;end local v53=v52[1 + 0 ];v51=v53.id;local v55=v10(v53.stat,v50);if  not v55 then return;end if (v53.stat==(701 -(271 + 429))) then local v141=0 + 0 ;local v142;local v143;while true do if (v141==(1501 -(1408 + 92))) then for v201=1087 -(461 + 625) ,v142 do local v202=v55-Vector3.new(0,1298 -(993 + 295) ,0 + 0 ) ;for v207=1172 -(418 + 753) ,v143 do local v208={[1]=v51,[2]=CFrame.new(v202)};local v209,v210=pcall(function() task.spawn(function() game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("spawn_unit"):InvokeServer(unpack(v208));end);end);task.wait(0.5);local v211=v4.PlayerGui:FindFirstChild("MessageGui");local v212=v211 and v211:FindFirstChild("messages") ;local v213=v212 and v212:FindFirstChild("Error") ;if v213 then local v233=0 + 0 ;local v234;local v235;while true do if (v233==0) then v234=v213:FindFirstChild("Tex");v235=(v234 and v234.Text) or "" ;v233=1 + 0 ;end if (v233==1) then v213:Destroy();if string.find(v235,"Cannot place unit here") then v202=v202 + Vector3.new(0 + 0 ,0.5,0) ;elseif string.find(v235,"Not enough money") then return;elseif (string.find(v235,"Cannot place more than") or string.find(v235,"Unique units may")) then local v251=0;while true do if (v251==(0 + 0)) then _G["unit_id"   .. v53.slot ]="";return v15(v49,v50);end end end break;end end else local v236=0;while true do if (v236==(529 -(406 + 123))) then v13();return;end end end end v55=v10(v53.stat,v50);if  not v55 then return;end end return;end if (v141==(1769 -(1749 + 20))) then v142=3 + 7 ;v143=1382 -(1249 + 73) ;v141=1;end end end local v56=0;while v56<10  do local v113=0 + 0 ;local v114;local v115;local v116;local v117;local v118;local v119;while true do if (v113==(1148 -(466 + 679))) then if v119 then local v203=v119:FindFirstChild("Tex");local v204=(v203 and v203.Text) or "" ;v119:Destroy();if string.find(v204,"Cannot place unit here") then local v223=0;while true do if (v223==(0 -0)) then v55=v55 + Vector3.new(math.random( -(5 -3),2),1900 -(106 + 1794) ,math.random( -2,1 + 1 )) ;v56=v56 + 1 + 0 ;break;end end elseif string.find(v204,"Not enough money") then return;elseif string.find(v204,"Cannot place more than") then _G["unit_id"   .. v53.slot ]="";return v15(v49,v50);end else local v205=0;while true do if (v205==(0 -0)) then v13();return;end end end break;end if (v113==(5 -3)) then v118=v117 and v117:FindFirstChild("messages") ;v119=v118 and v118:FindFirstChild("Error") ;v113=3;end if (v113==0) then v114={[1]=v51,[116 -(4 + 110) ]=CFrame.new(v55)};v115,v116=pcall(function() task.spawn(function() game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("spawn_unit"):InvokeServer(unpack(v114));end);end);v113=585 -(57 + 527) ;end if (v113==(1428 -(41 + 1386))) then task.wait(103.5 -(17 + 86) );v117=v4.PlayerGui:FindFirstChild("MessageGui");v113=2 + 0 ;end end end end local function v16() local v57=workspace._BASES.player.LANES["1"].final;local v58=workspace._terrain.hill:GetChildren();if ( not v57 or  not v58) then return;end local v59={};local function v60(v120) for v144,v145 in pairs(v120:GetChildren()) do if v145:IsA("BasePart") then local v170=0 -0 ;while true do if (v170==(0 -0)) then v145.Name="Temp_"   .. tostring( #v59 + 1 ) ;table.insert(v59,{part=v145,distance=0});break;end end elseif (v145:IsA("Model") or v145:IsA("Folder")) then v60(v145);end end end v60(workspace._terrain.hill);for v121,v122 in ipairs(v59) do local v123=v122.part;v122.distance=(v123.Position-v57.Position).Magnitude;end table.sort(v59,function(v126,v127) return v126.distance<v127.distance ;end);for v128,v129 in ipairs(v59) do v129.part.Name="80085"   .. tostring(v128) ;end end v16();function waitForMoney(v61) task.wait(0.5);while v4._stats.resource.Value<v61  do if workspace._DATA.GameFinished.Value then return;end task.wait(0.5);end task.wait(1);end local v17=workspace._BASES.player.LANES["1"].final;local v18=workspace._terrain.hill:GetChildren();if ( not v17 or  not v18) then warn("Required objects not found!");return;end local v19={};local function v20(v62) for v131,v132 in pairs(v62:GetChildren()) do if v132:IsA("BasePart") then v132.Name="Temp_"   .. tostring( #v19 + 1 ) ;table.insert(v19,{part=v132,distance=166 -(122 + 44) });elseif (v132:IsA("Model") or v132:IsA("Folder")) then v20(v132);end end end v20(workspace._terrain.hill);for v63,v64 in ipairs(v19) do local v65=v64.part;v64.distance=(v65.Position-v17.Position).Magnitude;end table.sort(v19,function(v68,v69) return v68.distance<v69.distance ;end);for v70,v71 in ipairs(v19) do v71.part.Name="80085"   .. tostring(v70) ;end function teleportToLanePart(v73) local v74=0 -0 ;local v75;local v76;local v77;local v78;local v79;local v80;while true do if (v74==(6 -4)) then v78=math.clamp(v78,1, #v76);v79=v76[v78];v80=game.Players.LocalPlayer;if (v80 and v80.Character and v80.Character:FindFirstChild("HumanoidRootPart")) then local v180=0 + 0 ;local v181;while true do if (v180==(0 + 0)) then v181=v80.Character.HumanoidRootPart;v181.CFrame=v79.CFrame + Vector3.new(0 -0 ,70 -(30 + 35) ,0 + 0 ) ;break;end end else warn("Player or HumanoidRootPart not found.");end break;end if (v74==(1257 -(1043 + 214))) then v75=workspace._BASES.pve.LANES["1"];v76={};for v171,v172 in pairs(v75:GetChildren()) do if tonumber(v172.Name) then table.insert(v76,v172);end end table.sort(v76,function(v173,v174) return tonumber(v173.Name)<tonumber(v174.Name) ;end);v74=3 -2 ;end if (v74==(1213 -(323 + 889))) then if ( #v76==(0 -0)) then local v182=0;while true do if (v182==(580 -(361 + 219))) then warn("No numbered parts found in the lane.");return;end end end v77=math.ceil( #v76/(322 -(53 + 267)) );if  not v73 then local v183=0 + 0 ;while true do if (v183==(413 -(15 + 398))) then warn("positionType is nil, setting to default (1)");v73=983 -(18 + 964) ;break;end end end v78=v77 + (v73-1) ;v74=2;end end end local v5=game:GetService("VirtualInputManager");local v4=game:GetService("Players").LocalPlayer;local v21=v4.PlayerGui.spawn_units.Lives.Frame.Units;unit_id1=v21["1"]:GetAttribute("_equipped_frame_unit_uuid");unit_id2=v21["2"]:GetAttribute("_equipped_frame_unit_uuid");unit_id3=v21["3"]:GetAttribute("_equipped_frame_unit_uuid");unit_id4=v21["4"]:GetAttribute("_equipped_frame_unit_uuid");unit_id5=v21["5"]:GetAttribute("_equipped_frame_unit_uuid");unit_id6=v21["6"]:GetAttribute("_equipped_frame_unit_uuid");function checkUnit(v81,v82) local v83=0 -0 ;local v84;local v85;local v86;local v87;local v88;local v89;local v90;local v91;local v92;local v93;local v94;local v95;local v96;while true do if (v83==(0 + 0)) then v84=tick();if ( not v81 or (v81=="")) then return nil;end v85=v21:FindFirstChild(tostring(v82));if  not v85 then return nil;end v86=v85.Main.View.WorldModel;v83=1;end if (v83==(1 + 0)) then if v86:FindFirstChild("bulma") then return 25;end if v86:FindFirstChild("speedwagon") then return 26;end v87=Enum.KeyCode['One'];if (v82==(852 -(20 + 830))) then v87=Enum.KeyCode.Two;end if (v82==3) then v87=Enum.KeyCode.Three;end v83=2 + 0 ;end if (v83==(129 -(116 + 10))) then v5:SendKeyEvent(false,v87,false,game);v88=workspace:FindFirstChild("ignore");if  not v88 then return nil;end v89=Color3.fromRGB(255,0,0);v90=Color3.fromRGB(0 + 0 ,255,0);v83=742 -(542 + 196) ;end if (v83==5) then for v175,v176 in pairs(v93) do for v186,v187 in ipairs(v176) do if (v187.Color==v90) then v91=true;end end end v95=(v91 and 1) or (0 -0) ;v5:SendKeyEvent(true,Enum.KeyCode.Q,false,game);task.wait(0.5 + 0 );v5:SendKeyEvent(false,Enum.KeyCode.Q,false,game);v83=4 + 2 ;end if (v83==(1 + 1)) then if (v82==(10 -6)) then v87=Enum.KeyCode.Four;end if (v82==(12 -7)) then v87=Enum.KeyCode.Five;end if (v82==(1557 -(1126 + 425))) then v87=Enum.KeyCode.Six;end v5:SendKeyEvent(true,v87,false,game);task.wait(405.5 -(118 + 287) );v83=11 -8 ;end if (v83==(1127 -(118 + 1003))) then v96=tick() -v84 ;return v95;end if (v83==(11 -7)) then v91=false;v92=0;v93={};v94={_bounds=true,_item_drops=true,houses=true,orbs=true,presistent=true,unit=true};for v177,v178 in pairs(v88:GetChildren()) do if (v178:IsA("BasePart") and  not v94[v178.Name]) then local v206=377 -(142 + 235) ;while true do if (v206==0) then if  not v93[v178.Name] then v93[v178.Name]={};end table.insert(v93[v178.Name],v178);break;end end else v92=v92 + (4 -3) ;end end v83=2 + 3 ;end end end unit_stat1=checkUnit(unit_id1,1);unit_stat2=checkUnit(unit_id2,979 -(553 + 424) );unit_stat3=checkUnit(unit_id3,5 -2 );unit_stat4=checkUnit(unit_id4,4);unit_stat5=checkUnit(unit_id5,5);unit_stat6=checkUnit(unit_id6,6 + 0 );v5:SendKeyEvent(true,Enum.KeyCode.Q,false,game);task.wait(0.2 + 0 );v5:SendKeyEvent(false,Enum.KeyCode.Q,false,game);_G['unit_id1']=unit_id1;_G['unit_id2']=unit_id2;_G['unit_id3']=unit_id3;_G['unit_id4']=unit_id4;_G['unit_id5']=unit_id5;_G['unit_id6']=unit_id6;_G['unit_stat1']=unit_stat1;_G['unit_stat2']=unit_stat2;_G['unit_stat3']=unit_stat3;_G['unit_stat4']=unit_stat4;_G['unit_stat5']=unit_stat5;_G['unit_stat6']=unit_stat6;print(unit_stat1,unit_stat2,unit_stat3,unit_stat4,unit_stat5,unit_stat6);local v22,v23=false,false;if ((unit_stat1==(15 + 10)) or (unit_stat2==(11 + 14)) or (unit_stat3==(15 + 10)) or (unit_stat4==(54 -29)) or (unit_stat5==(69 -44)) or (unit_stat6==(55 -30))) then v22=true;end if ((unit_stat1==(8 + 18)) or (unit_stat2==(125 -99)) or (unit_stat3==(779 -(239 + 514))) or (unit_stat4==(10 + 16)) or (unit_stat5==26) or (unit_stat6==26)) then v23=true;end function waitForMatch() while  not workspace._waves_started.Value do game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("vote_start"):InvokeServer();if (workspace._DATA.GameFinished.Value==true) then return;end task.wait(1331 -(797 + 532) );end end if ( #game.Players:GetPlayers()~=1) then if (v22 and v23) then local v153=0;while true do if (v153==(6 + 1)) then waitForMoney(1013 + 1987 );v15(0,2);waitForMoney(4500);v12("bulma");waitForMoney(7500);v153=18 -10 ;end if (v153==(1208 -(373 + 829))) then v12("ceo1");waitForMoney(3231 -(476 + 255) );v12("ceo2");waitForMoney(2500);v12("ceo3");v153=1137 -(369 + 761) ;end if (v153==(3 + 1)) then v12("bulma");waitForMoney(3178 -1428 );v12("ceo1");waitForMoney(3316 -1566 );v12("ceo2");v153=5;end if (v153==9) then waitForMoney(3238 -(64 + 174) );v12("ceo2");waitForMoney(428 + 2572 );v12("ceo3");break;end if (v153==2) then v15(37 -12 ,3);waitForMoney(1000);v12("ceo1");waitForMoney(1336 -(144 + 192) );v12("ceo2");v153=219 -(42 + 174) ;end if (0==v153) then teleportToLanePart(2);wait(1);waitForMatch();waitForMoney(414 + 136 );v15(22 + 4 ,3);v153=1 + 0 ;end if (v153==(1505 -(363 + 1141))) then waitForMoney(2130 -(1183 + 397) );v15(26,8 -5 );waitForMoney(404 + 146 );v15(20 + 6 ,3);waitForMoney(800);v153=1977 -(1913 + 62) ;end if (v153==3) then waitForMoney(1000);v12("ceo3");waitForMoney(945 + 555 );v12("bulma");waitForMoney(7941 -4941 );v153=1937 -(565 + 1368) ;end if ((30 -22)==v153) then v12("bulma");waitForMoney(11661 -(1477 + 184) );v12("bulma");waitForMoney(4087 -1087 );v12("ceo1");v153=9 + 0 ;end if (v153==(861 -(564 + 292))) then waitForMoney(3019 -1269 );v12("ceo3");waitForMoney(3000);v15(0,5 -3 );waitForMoney(2804 -(244 + 60) );v153=5 + 1 ;end end elseif v23 then local v191=476 -(41 + 435) ;while true do if (v191==(1008 -(938 + 63))) then waitForMoney(2308 + 692 );v12("ceo3");break;end if (v191==(1126 -(936 + 189))) then waitForMoney(182 + 368 );v15(26,1616 -(1565 + 48) );waitForMoney(340 + 210 );v15(1164 -(782 + 356) ,3);waitForMoney(1267 -(176 + 91) );v191=4 -2 ;end if ((0 -0)==v191) then teleportToLanePart(1093 -(975 + 117) );wait(1876 -(157 + 1718) );waitForMatch();waitForMoney(447 + 103 );v15(92 -66 ,10 -7 );v191=1;end if (5==v191) then waitForMoney(3518 -(697 + 321) );v12("ceo2");waitForMoney(6810 -4310 );v12("ceo3");waitForMoney(6355 -3355 );v191=13 -7 ;end if ((3 + 3)==v191) then v15(0 -0 ,5 -3 );waitForMoney(4227 -(322 + 905) );v12("ceo1");waitForMoney(3611 -(602 + 9) );v12("ceo2");v191=7;end if (v191==4) then v12("ceo3");waitForMoney(3000);v15(1189 -(449 + 740) ,874 -(826 + 46) );waitForMoney(2500);v12("ceo1");v191=952 -(245 + 702) ;end if (v191==(9 -6)) then waitForMoney(563 + 1187 );v12("ceo1");waitForMoney(3648 -(260 + 1638) );v12("ceo2");waitForMoney(2190 -(382 + 58) );v191=4;end if (v191==(6 -4)) then v12("ceo1");waitForMoney(831 + 169 );v12("ceo2");waitForMoney(2066 -1066 );v12("ceo3");v191=8 -5 ;end end elseif v22 then local v215=0;while true do if (v215==(1207 -(902 + 303))) then v12("bulma");waitForMoney(3000);v15(0 -0 ,2);waitForMoney(10838 -6338 );v215=1 + 2 ;end if (v215==1) then v15(1715 -(1121 + 569) ,3);waitForMoney(1714 -(22 + 192) );v12("bulma");waitForMoney(3683 -(483 + 200) );v215=1465 -(1404 + 59) ;end if ((8 -5)==v215) then v12("bulma");waitForMoney(10080 -2580 );v12("bulma");waitForMoney(10765 -(468 + 297) );v215=566 -(334 + 228) ;end if ((13 -9)==v215) then v12("bulma");break;end if (v215==0) then teleportToLanePart(0 -0 );wait(1 -0 );waitForMatch();waitForMoney(228 + 572 );v215=237 -(141 + 95) ;end end else local v216=0;while true do if (v216==1) then waitForMatch();break;end if (v216==0) then teleportToLanePart();wait(1 + 0 );v216=2 -1 ;end end end end if ( #game.Players:GetPlayers()==(2 -1)) then if (v22 and v23) then teleportToLanePart(1 + 1 );wait(2 -1 );waitForMatch();waitForMoney(550);v15(19 + 7 ,2 + 0 );waitForMoney(774 -224 );v15(26,2 + 0 );waitForMoney(550);v15(189 -(92 + 71) ,1 + 1 );waitForMoney(1345 -545 );v15(25,767 -(574 + 191) );waitForMoney(1000);v12("ceo1");waitForMoney(825 + 175 );v12("ceo2");waitForMoney(2500);v15(0 -0 ,2 + 0 );waitForMoney(1849 -(254 + 595) );v12("ceo3");waitForMoney(1500);v12("bulma");waitForMoney(2626 -(55 + 71) );v15(0,2);waitForMoney(2305 -555 );v12("ceo1");waitForMoney(1750);v12("ceo2");waitForMoney(2500);v12("ceo1");waitForMoney(4290 -(573 + 1217) );v12("ceo2");waitForMoney(6923 -4423 );v12("ceo3");waitForMoney(191 + 2309 );v15(0 -0 ,941 -(714 + 225) );waitForMoney(8767 -5767 );v12("bulma");waitForMoney(6273 -1773 );v12("bulma");waitForMoney(271 + 2229 );v15(0,2 -0 );waitForMoney(8306 -(118 + 688) );v12("bulma");waitForMoney(10048 -(25 + 23) );v12("bulma");waitForMoney(582 + 2418 );v12("ceo1");waitForMoney(4886 -(927 + 959) );v12("ceo2");waitForMoney(2500);v12("ceo3");waitForMoney(10112 -7112 );v12("ceo3");elseif v23 then local v192=732 -(16 + 716) ;while true do if (v192==(9 -4)) then v12("ceo3");waitForMoney(2500);v15(97 -(11 + 86) ,6 -3 );waitForMoney(3285 -(175 + 110) );v12("ceo1");waitForMoney(7574 -4574 );v192=29 -23 ;end if ((1798 -(503 + 1293))==v192) then v12("ceo2");waitForMoney(2792 -1792 );v12("ceo3");waitForMoney(1808 + 692 );v15(0,1064 -(810 + 251) );waitForMoney(1215 + 535 );v192=3;end if (v192==(1 + 0)) then v15(24 + 2 ,534 -(43 + 490) );waitForMoney(550);v15(759 -(711 + 22) ,1);waitForMoney(1000);v12("ceo1");waitForMoney(3868 -2868 );v192=2;end if (v192==0) then teleportToLanePart(1);wait(860 -(240 + 619) );waitForMatch();waitForMoney(550);v15(26,1 + 0 );waitForMoney(550);v192=1 -0 ;end if (v192==(1 + 2)) then v12("ceo1");waitForMoney(1750);v12("ceo2");waitForMoney(3494 -(1344 + 400) );v12("ceo3");waitForMoney(2905 -(255 + 150) );v192=4;end if (v192==4) then v15(0,3 + 0 );waitForMoney(1339 + 1161 );v12("ceo1");waitForMoney(2500);v12("ceo2");waitForMoney(10681 -8181 );v192=16 -11 ;end if (v192==6) then v12("ceo2");waitForMoney(3000);v12("ceo3");break;end end elseif v22 then local v217=1739 -(404 + 1335) ;while true do if (v217==(409 -(183 + 223))) then v15(0 -0 ,2 + 1 );waitForMoney(4500);v12("bulma");waitForMoney(2700 + 4800 );v217=341 -(10 + 327) ;end if ((2 + 0)==v217) then v15(0,341 -(118 + 220) );waitForMoney(1000 + 2000 );v12("bulma");waitForMoney(2949 -(108 + 341) );v217=3;end if (v217==4) then v12("bulma");waitForMoney(1123 + 1377 );v15(0,3);waitForMoney(42278 -32278 );v217=5;end if (v217==0) then teleportToLanePart(0);wait(1494 -(711 + 782) );waitForMatch();waitForMoney(800);v217=1 -0 ;end if (v217==(474 -(270 + 199))) then v12("bulma");break;end if (v217==(1 + 0)) then v15(1844 -(580 + 1239) ,1);waitForMoney(4459 -2959 );v12("bulma");waitForMoney(2500);v217=2 + 0 ;end end else local v218=0;while true do if (v218==1) then waitForMatch();break;end if (v218==0) then teleportToLanePart();wait(1 + 0 );v218=1 + 0 ;end end end end while workspace._DATA.GameFinished.Value==false  do local v97=0 -0 ;while true do if (v97==(0 + 0)) then v15(0,1169 -(645 + 522) );task.wait(1795 -(1010 + 780) );v97=1 + 0 ;end if ((4 -3)==v97) then v12();task.wait(5);break;end end end wait(2);game:GetService("ReplicatedStorage").endpoints.client_to_server.teleport_back_to_lobby:InvokeServer();
+repeat wait() until game:GetService("Players").LocalPlayer.Character
+repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
+repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
+wait(5)
+--print("spawn_units and island are now available, waited 5 seconds!")
+
+
+    task.spawn(function()
+   --     loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/FAKE%20GUI%20LOG.lua", true))()
+
+    end)
+
+
+local function hideErrorMessage()
+    while true do
+        local errorGui = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
+        if errorGui and errorGui:FindFirstChild("messages") then
+            local errorMsg = errorGui.messages:FindFirstChild("Error")
+            if errorMsg then
+                errorMsg.Visible = false -- Hide the error message instead of destroying it
+            end
+        end
+        task.wait(0.05) -- Slight delay to prevent performance issues
+    end
+end
+
+-- Run the function in a separate thread so it doesn't block execution
+task.spawn(hideErrorMessage)
+
+
+
+-- anti afk script
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Vim = game:GetService("VirtualInputManager")
+
+-- Track current lane for cycling through them
+local laneIndex = 1
+
+-- Get available lanes
+local function getLanes()
+    local lanes = workspace._BASES.pve.LANES:GetChildren()
+    table.sort(lanes, function(a, b) return tonumber(a.Name) < tonumber(b.Name) end) -- Sort numerically
+    return lanes
+end
+
+local lanes = getLanes()
+
+
+local function getHillParts()
+    local hillParts = {}
+
+    local function findParts(parent)
+        for _, obj in pairs(parent:GetChildren()) do
+            if obj:IsA("BasePart") and obj.Name:match("^80085%d+$") then
+                table.insert(hillParts, obj)
+            elseif obj:IsA("Model") or obj:IsA("Folder") then
+                findParts(obj) -- Recursively find all BaseParts inside models/folders
+            end
+        end
+    end
+
+    -- Search both direct & nested parts
+    findParts(workspace._terrain.hill)
+
+    table.sort(hillParts, function(a, b)
+        return tonumber(a.Name:match("%d+")) < tonumber(b.Name:match("%d+"))
+    end)
+
+    return hillParts
+end
+
+
+
+
+
+local function getPlacementPosition(unitType, zone)
+    local chosenLane = lanes[laneIndex] -- Get current lane
+    laneIndex = (laneIndex % #lanes) + 1 -- Cycle lanes
+
+    -- HILL UNIT PLACEMENT
+    if unitType == 1 then 
+        local hillParts = getHillParts() -- Get hill parts correctly
+        if #hillParts == 0 then return nil end
+
+        local rangeStart = 1
+        local rangeEnd = math.floor(#hillParts * 0.4)
+
+        if zone == 2 then
+            rangeStart = rangeEnd + 1
+            rangeEnd = rangeStart + math.floor(#hillParts * 0.3)
+        elseif zone == 3 then
+            rangeStart = rangeEnd + 1
+            rangeEnd = #hillParts
+        end
+
+        local selectedHill = hillParts[math.random(rangeStart, rangeEnd)]
+        if selectedHill then
+            local newPosition = selectedHill.Position + Vector3.new(math.random(-2, 2), 2, math.random(-2, 2)) -- Adjust position
+            return newPosition -- Return Vector3 instead of CFrame
+        end
+    end
+
+    -- GROUND UNIT PLACEMENT (Only if no hill available)
+    local pathParts = {}
+
+    for _, obj in pairs(chosenLane:GetChildren()) do
+        if tonumber(obj.Name) then
+            table.insert(pathParts, obj)
+        end
+    end
+
+    table.sort(pathParts, function(a, b) return tonumber(a.Name) < tonumber(b.Name) end)
+
+    local pathSize = #pathParts
+    if pathSize == 0 then return nil end
+
+    local rangeStart = 1
+    local rangeEnd = math.floor(pathSize * 0.4)
+
+    if zone == 2 then
+        rangeStart = rangeEnd + 1
+        rangeEnd = rangeStart + math.floor(pathSize * 0.3)
+    elseif zone == 3 then
+        rangeStart = rangeEnd + 1
+        rangeEnd = pathSize
+    end
+
+    local selectedPath = pathParts[math.random(rangeStart, rangeEnd)]
+    return selectedPath and (selectedPath.Position + Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))) or nil
+end
+
+
+local function clearErrorMessage()
+    local errorGui = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
+    if errorGui and errorGui:FindFirstChild("messages") then
+        local errorMsg = errorGui.messages:FindFirstChild("Error")
+        if errorMsg then
+            errorMsg:Destroy() -- Remove error message if it exists
+        end
+    end
+end
+
+
+
+
+
+-- upgrade unit (now includes Bulma)
+local function upgradeUnit(unitID)
+    local unitFolder = workspace:WaitForChild("_UNITS")
+    local allUnits = unitFolder:GetChildren()
+
+    if workspace._DATA.GameFinished.Value then
+        return
+    end
+
+    local function isMaxed(unit)
+        local stats = unit:FindFirstChild("_stats")
+        if stats then
+            local maxUpgrade = stats:FindFirstChild("max_upgrade")
+            local currentUpgrade = stats:FindFirstChild("upgrade")
+            if maxUpgrade and currentUpgrade and maxUpgrade.Value == currentUpgrade.Value then
+                return true
+            end
+        end
+        return false
+    end
+
+    if unitID == nil then
+        for _, unit in pairs(allUnits) do
+            if unit:IsA("Model") and not unit.Name:lower():find("^ceo%d+$") then
+                if not isMaxed(unit) then
+                    local args = {[1] = unit}
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("upgrade_unit_ingame"):InvokeServer(unpack(args))
+                    wait(0.05)
+					clearErrorMessage()
+
+                end
+            end
+        end
+        return
+    end
+
+    if tonumber(unitID) then
+        unitID = tostring(800850 + tonumber(unitID))
+    end
+
+    for _, unit in pairs(allUnits) do
+        if unit:IsA("Model") and (unit.Name == tostring(unitID) or unit.Name:lower():find("^bulma%d+$")) then
+            if not isMaxed(unit) then
+                local args = {[1] = unit}
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("upgrade_unit_ingame"):InvokeServer(unpack(args))
+					wait(0.5)
+					clearErrorMessage()
+
+            end
+            return
+        end
+    end
+end
+
+-- Usage Examples:
+-- upgradeUnit(1)      -- Upgrades unit 800851
+-- upgradeUnit(2)      -- Upgrades unit 800852
+-- upgradeUnit("ceo1") -- Upgrades CEO unit ceo1
+-- upgradeUnit("bulma")-- Upgrades Bulma
+-- upgradeUnit()       -- Upgrades all units (except ceo & bulma), skipping maxed ones
+
+
+
+
+-- name all units (including Bulma)
+local function renameUnits()
+    local player = game.Players.LocalPlayer
+    local unitFolder = workspace:WaitForChild("_UNITS")
+
+    local unitCount = 800851
+    local ceoCount = 1
+    local bulmaCount = 293
+
+    -- Determine the highest existing numbers
+    for _, unit in pairs(unitFolder:GetChildren()) do
+        if unit:IsA("Model") and unit:FindFirstChild("_stats") then
+            local stats = unit:FindFirstChild("_stats")
+            local owner = stats:FindFirstChild("player")
+            
+            if owner and owner.Value == player then
+                local unitName = unit.Name:lower()
+                
+                if unitName:find("^ceo%d+$") then
+                    local num = tonumber(unit.Name:match("%d+"))
+                    if num and num >= ceoCount then
+                        ceoCount = num + 1
+                    end
+                elseif unitName:find("^bulma%d+$") then
+                    local num = tonumber(unit.Name:match("%d+"))
+                    if num and num >= bulmaCount then
+                        bulmaCount = num + 1
+                    end
+                elseif tonumber(unit.Name) then
+                    local num = tonumber(unit.Name)
+                    if num and num >= unitCount then
+                        unitCount = num + 1
+                    end
+                end
+            end
+        end
+    end
+
+    -- Rename only new units
+    for _, unit in pairs(unitFolder:GetChildren()) do
+        if unit:IsA("Model") and unit:FindFirstChild("_stats") then
+            local stats = unit:FindFirstChild("_stats")
+            local owner = stats:FindFirstChild("player")
+
+            if owner and owner.Value == player then
+                local unitName = unit.Name:lower()
+
+                if unitName:find("^ceo%d+$") or unitName:find("^bulma%d+$") or tonumber(unit.Name) then
+                    continue
+                end
+
+                if unitName:find("speedwagon") then
+                    unit.Name = "ceo" .. ceoCount
+                    ceoCount = ceoCount + 1
+                elseif unitName:find("bulma") then
+                    unit.Name = "bulma" .. bulmaCount
+                    bulmaCount = bulmaCount + 1
+                else
+                    unit.Name = tostring(unitCount)
+                    unitCount = unitCount + 1
+                end
+            end
+        end
+    end
+end
+
+
+
+
+
+
+
+-- Function to detect error messages
+local function getErrorMessage()
+    local errorGui = LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
+    if errorGui and errorGui:FindFirstChild("messages") then
+        local errorMsg = errorGui.messages:FindFirstChild("Error")
+        if errorMsg then
+            local errorText = errorMsg:FindFirstChild("Tex")
+            if errorText then
+                local message = errorText.Text
+                errorMsg:Destroy() -- Remove after reading
+                return message
+            end
+        end
+    end
+    return nil
+end
+
+
+
+-- Function to place a unit
+local function placeUnit(unitType, zone)
+--[[
+DONT WORK TRY AGAIN LATER
+-- SELL CEO IF IT IS MAX!
+if workspace:FindFirstChild("_is_last_wave") and workspace._is_last_wave.Value == true then
+    local deadUnits = game:GetService("ReplicatedStorage"):WaitForChild("_DEAD_UNITS")
+
+    for i = 1, 3 do
+            task.wait(0.2)
+        local ceoUnit = deadUnits:FindFirstChild("ceo" .. i)
+        if ceoUnit then
+            local args = {
+                [1] = ceoUnit
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("sell_unit_ingame"):InvokeServer(unpack(args))
+        end
+    end
+end
+
+]]
+    local unitId = nil
+    local availableSlots = {}
+
+        if workspace._DATA.GameFinished.Value then
+            return
+        end
+
+    -- SCAN FOR UNITS (PRIORITIZING HILL/HYBRID FIRST)
+    for i = 1, 6 do
+        local id = _G["unit_id" .. i]
+        local stat = _G["unit_stat" .. i]
+
+        if id and id ~= "" then
+            if unitType == 0 then
+                if stat == 1 then -- Hill/Hybrid PRIORITY
+                    table.insert(availableSlots, {slot = i, id = id, stat = stat})
+                elseif stat == 0 then -- Ground Fallback
+                    table.insert(availableSlots, {slot = i, id = id, stat = stat})
+                end
+            elseif unitType == 25 and stat == 25 then
+                table.insert(availableSlots, {slot = i, id = id, stat = stat})
+            elseif unitType == 26 and stat == 26 then
+                table.insert(availableSlots, {slot = i, id = id, stat = stat})
+            end
+        end
+    end
+
+    -- ALWAYS TRY HILL UNITS FIRST FOR placeUnit(0, x)
+    table.sort(availableSlots, function(a, b) return a.stat > b.stat end)
+
+    if #availableSlots == 0 then return end
+
+    local chosenSlot = availableSlots[1]
+    unitId = chosenSlot.id
+
+    local position = getPlacementPosition(chosenSlot.stat, zone)
+    if not position then return end
+
+    -- New retry logic for HILL UNITS
+    if chosenSlot.stat == 1 then
+        local maxHillRetries = 10
+        local maxAttemptsPerPosition = 60
+
+        for hillRetry = 1, maxHillRetries do
+            local currentPosition = position - Vector3.new(0, 10, 0) -- Start from CFrame -10 Y
+            
+            for attempt = 1, maxAttemptsPerPosition do
+                local args = {
+                    [1] = unitId,
+                    [2] = CFrame.new(currentPosition) -- Convert Vector3 to CFrame
+                }
+                
+         --       print(currentPosition)
+                
+                -- **NEW FIX: Run spawn_unit asynchronously to prevent freezing**
+                local success, err = pcall(function()
+                    task.spawn(function()
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("spawn_unit"):InvokeServer(unpack(args))
+                    end)
+                end)
+
+                -- **Wait a short moment to check if an error appears**
+                task.wait(0.5) 
+
+                local errorGui = LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
+                local messages = errorGui and errorGui:FindFirstChild("messages")
+                local errorMessageObject = messages and messages:FindFirstChild("Error")
+
+                if errorMessageObject then
+                    -- **If an error appears, continue retrying**
+                    local errorText = errorMessageObject:FindFirstChild("Tex")
+                    local message = errorText and errorText.Text or ""
+
+                    -- **Delete the error message to avoid buildup**
+                    errorMessageObject:Destroy()
+               --     print("🗑️ Deleted 'Cannot place unit here' message")
+
+                    -- **If the error is about placement, adjust Y and retry**
+                    if string.find(message, "Cannot place unit here") then
+                        currentPosition = currentPosition + Vector3.new(0, 0.5, 0)
+                    elseif string.find(message, "Not enough money") then
+                        return
+					elseif string.find(message, "Cannot place more than") or string.find(message, "Unique units may") then
+                        _G["unit_id" .. chosenSlot.slot] = "" -- Remove unit ID so it is skipped later
+                        return placeUnit(unitType, zone) -- Retry with another unit
+                    end
+                else
+                    -- **If NO error appears, assume placement succeeded and exit**
+                    renameUnits()
+           --         print("✅ Placement successful!")
+                    return
+                end
+            end
+
+            -- Move to the next hill position if all attempts at this one fail
+            position = getPlacementPosition(chosenSlot.stat, zone)
+            if not position then return end
+        end
+
+        return -- Stop if all hill placements fail
+    end
+
+    -- ORIGINAL GROUND UNIT PLACEMENT (unchanged)
+    local attempts = 0
+    while attempts < 10 do
+        local args = {
+            [1] = unitId,
+            [2] = CFrame.new(position) -- Convert Vector3 to CFrame
+        }
+
+        -- **NEW FIX: Run spawn_unit asynchronously to prevent freezing**
+        local success, err = pcall(function()
+            task.spawn(function()
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("spawn_unit"):InvokeServer(unpack(args))
+            end)
+        end)
+
+        -- **Wait a short moment to check if an error appears**
+        task.wait(0.5)
+
+        local errorGui = LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
+        local messages = errorGui and errorGui:FindFirstChild("messages")
+        local errorMessageObject = messages and messages:FindFirstChild("Error")
+
+        if errorMessageObject then
+            -- **If an error appears, continue retrying**
+            local errorText = errorMessageObject:FindFirstChild("Tex")
+            local message = errorText and errorText.Text or ""
+
+            -- **Delete the error message to avoid buildup**
+            errorMessageObject:Destroy()
+     --       print("🗑️ Deleted 'Cannot place unit here' message")
+
+            -- **If the error is about placement, adjust position and retry**
+            if string.find(message, "Cannot place unit here") then
+                position = position + Vector3.new(math.random(-2, 2), 0, math.random(-2, 2))
+                attempts = attempts + 1
+            elseif string.find(message, "Not enough money") then
+                return
+            elseif string.find(message, "Cannot place more than") then
+                _G["unit_id" .. chosenSlot.slot] = "" -- Remove unit ID so it is skipped later
+                return placeUnit(unitType, zone) -- Retry with another unit
+            end
+        else
+            -- **If NO error appears, assume placement succeeded and exit**
+            renameUnits()
+      --      print("✅ Placement successful!")
+            return
+        end
+    end
+end
+
+
+-- place unit works like this
+-- first type, 25 = bulma, 26 = ceo, 0 = unit (hill or hybrid gets placed first, moving on to ground)
+-- second argument, is the location, 1 = 0 to 40% of the map, 2 = 40 - 70 % of the map, 3 = 70 - 100% of the map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Hill Detection and Sorting
+local function setupHills()
+    local finalObject = workspace._BASES.player.LANES["1"].final
+    local terrainGroup = workspace._terrain.hill:GetChildren()
+
+    if not finalObject or not terrainGroup then return end
+
+    local parts = {}
+
+    local function findParts(parent)
+        for _, obj in pairs(parent:GetChildren()) do
+            if obj:IsA("BasePart") then
+                obj.Name = "Temp_" .. tostring(#parts + 1)
+                table.insert(parts, { part = obj, distance = 0 })
+            elseif obj:IsA("Model") or obj:IsA("Folder") then
+                findParts(obj)
+            end
+        end
+    end
+
+    findParts(workspace._terrain.hill)
+
+    for _, data in ipairs(parts) do
+        local part = data.part
+        data.distance = (part.Position - finalObject.Position).Magnitude
+    end
+
+    table.sort(parts, function(a, b)
+        return a.distance < b.distance
+    end)
+
+    for index, data in ipairs(parts) do
+        data.part.Name = "80085" .. tostring(index)
+    end
+end
+
+setupHills()
+
+
+
+
+
+-- Money Wait Function
+function waitForMoney(x)
+    task.wait(0.5)
+    while LocalPlayer._stats.resource.Value < x do
+        if workspace._DATA.GameFinished.Value then
+            return
+        end
+        task.wait(0.5)
+    end
+    task.wait(1)
+end
+
+
+-- Set EVERY part name from hill to 80085X to n, this ENSURES the script should WORK ON ALL MAPS, the script will rename all hills to 1 to n, n is the closest to the final object which is spawn, located at: workspace._BASES.player.LANES["1"].final
+-- This basically allows us to identify each part of hill, just like we can do with the path, the thing with path is, it starts with 1, and climbs it way to up n, I did the same for the hills
+local finalObject = workspace._BASES.player.LANES["1"].final
+local terrainGroup = workspace._terrain.hill:GetChildren() -- Get all children in "hill"
+
+if not finalObject or not terrainGroup then
+    warn("Required objects not found!")
+    return
+end
+
+local parts = {}
+
+-- Function to recursively find BaseParts inside models
+local function findParts(parent)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj:IsA("BasePart") then
+            obj.Name = "Temp_" .. tostring(#parts + 1) -- Unique temporary name
+            table.insert(parts, { part = obj, distance = 0 }) -- Store for sorting
+        elseif obj:IsA("Model") or obj:IsA("Folder") then
+            findParts(obj) -- Recursively search inside models/folders
+        end
+    end
+end
+
+-- Step 1: Find all parts inside hill (including nested ones)
+findParts(workspace._terrain.hill)
+
+-- Step 2: Calculate distances from .final
+for _, data in ipairs(parts) do
+    local part = data.part
+    data.distance = (part.Position - finalObject.Position).Magnitude
+end
+
+-- Step 3: Sort the parts by distance (closest first)
+table.sort(parts, function(a, b)
+    return a.distance < b.distance
+end)
+
+-- Step 4: Assign final names with "80085" prefix based on proximity
+for index, data in ipairs(parts) do
+    data.part.Name = "80085" .. tostring(index) -- Final numbering with identifier
+end
+
+function teleportToLanePart(positionType)
+    local lane = workspace._BASES.pve.LANES["1"]
+    local numberedParts = {}
+
+    -- Gather numbered children
+    for _, child in pairs(lane:GetChildren()) do
+        if tonumber(child.Name) then
+            table.insert(numberedParts, child)
+        end
+    end
+
+    -- Sort parts by numerical value
+    table.sort(numberedParts, function(a, b)
+        return tonumber(a.Name) < tonumber(b.Name)
+    end)
+
+    if #numberedParts == 0 then
+        warn("No numbered parts found in the lane.")
+        return
+    end
+
+    -- Find the middle index
+    local middleIndex = math.ceil(#numberedParts / 2)
+
+    -- Ensure positionType is a valid number (default to 1 if nil)
+    if not positionType then
+        warn("positionType is nil, setting to default (1)")
+        positionType = 1
+    end
+
+    -- Adjust index based on positionType
+    local targetIndex = middleIndex + (positionType - 1)
+
+    -- Ensure the target index stays within valid bounds
+    targetIndex = math.clamp(targetIndex, 1, #numberedParts)
+
+    local targetPart = numberedParts[targetIndex]
+
+    -- Teleport player just above the target part
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = player.Character.HumanoidRootPart
+        humanoidRootPart.CFrame = targetPart.CFrame + Vector3.new(0, 5, 0) -- Offset so player doesn't fall through
+    else
+        warn("Player or HumanoidRootPart not found.")
+    end
+end
+-- teleportToLane, (0( = middle part - 1), 1 = middle, 2 = middle + 1. Got it?
+
+-- GET UNIT STATS, 25 = Bulba, 26 = CEO, 0 = GROUND, 1 = HILL OR HYRBID
+
+local Vim = game:GetService("VirtualInputManager")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local spawn_units = LocalPlayer.PlayerGui.spawn_units.Lives.Frame.Units
+
+-- Get unit IDs
+unit_id1 = spawn_units["1"]:GetAttribute("_equipped_frame_unit_uuid")
+unit_id2 = spawn_units["2"]:GetAttribute("_equipped_frame_unit_uuid")
+unit_id3 = spawn_units["3"]:GetAttribute("_equipped_frame_unit_uuid")
+unit_id4 = spawn_units["4"]:GetAttribute("_equipped_frame_unit_uuid")
+unit_id5 = spawn_units["5"]:GetAttribute("_equipped_frame_unit_uuid")
+unit_id6 = spawn_units["6"]:GetAttribute("_equipped_frame_unit_uuid")
+
+
+
+function checkUnit(unit_id, unit_index)
+    -- Start timing for debugging
+    local startTime = tick() 
+  --  print("🔍 checkUnit() called for unit_id:", unit_id, "slot:", unit_index)
+
+    -- If no unit ID, return instantly
+    if not unit_id or unit_id == "" then 
+    --    print("⚠️ No unit ID found, skipping slot:", unit_index)
+        return nil 
+    end 
+
+    local unitFrame = spawn_units:FindFirstChild(tostring(unit_index))
+    if not unitFrame then 
+   --     print("⚠️ No unit frame found for slot:", unit_index)
+        return nil 
+    end 
+
+    local unitModel = unitFrame.Main.View.WorldModel
+    if unitModel:FindFirstChild("bulma") then 
+   --     print("✅ Detected Bulma in slot:", unit_index)
+        return 25 
+    end
+    if unitModel:FindFirstChild("speedwagon") then 
+   --     print("✅ Detected Speedwagon in slot:", unit_index)
+        return 26 
+    end
+
+    -- Select the unit
+    local keyCode = Enum.KeyCode["One"]
+    if unit_index == 2 then keyCode = Enum.KeyCode.Two end
+    if unit_index == 3 then keyCode = Enum.KeyCode.Three end
+    if unit_index == 4 then keyCode = Enum.KeyCode.Four end
+    if unit_index == 5 then keyCode = Enum.KeyCode.Five end
+    if unit_index == 6 then keyCode = Enum.KeyCode.Six end
+
+ --   print("🎯 Selecting unit at slot:", unit_index)
+    Vim:SendKeyEvent(true, keyCode, false, game)
+    task.wait(0.5)
+    Vim:SendKeyEvent(false, keyCode, false, game)
+
+    -- **Step 1: Check for terrain parts in `workspace.ignore`**
+    local ignore = workspace:FindFirstChild("ignore")
+    if not ignore then
+  --      print("❌ `workspace.ignore` not found!")
+        return nil
+    end
+
+    local RED_COLOR = Color3.fromRGB(255, 0, 0)
+    local GREEN_COLOR = Color3.fromRGB(0, 255, 0)
+
+    local greenFound = false -- Track if a green part is found
+    local skippedParts = 0
+    local partGroups = {}
+
+    local skipNames = {
+        _bounds = true,
+        _item_drops = true,
+        houses = true,
+        orbs = true,
+        presistent = true,
+        unit = true
+    }
+
+  --  print("🔍 Scanning `workspace.ignore` for parts...")
+
+    -- Process all direct children of `workspace.ignore`
+    for _, obj in pairs(ignore:GetChildren()) do
+        if obj:IsA("BasePart") and not skipNames[obj.Name] then
+            if not partGroups[obj.Name] then
+                partGroups[obj.Name] = {}
+            end
+            table.insert(partGroups[obj.Name], obj)
+        else
+            skippedParts = skippedParts + 1
+        end
+    end
+
+    -- Process each part group
+    for partName, parts in pairs(partGroups) do
+   --     print("🟢 Processing", #parts, "parts named:", partName)
+
+        for _, part in ipairs(parts) do
+            if part.Color == GREEN_COLOR then
+                greenFound = true
+            end
+        end
+    end
+
+    -- **Step 2: Determine Unit Type**
+    local terrainType = greenFound and 1 or 0 -- 1 = Hill, 0 = Ground
+ --   print("✅ Terrain Type:", terrainType == 1 and "HILL" or "GROUND")
+
+    -- **Step 3: Unselect the unit**
+ --   print("🎯 Unselecting unit...")
+    Vim:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
+    task.wait(0.5)
+    Vim:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
+
+    -- Debug time taken
+    local elapsedTime = tick() - startTime
+ --   print("⏳ checkUnit() completed in:", elapsedTime, "seconds")
+
+    return terrainType -- Return 1 (Hill) if green found, else return 0 (Ground)
+end
+
+
+
+
+
+-- Assign unit stats to global variables
+unit_stat1 = checkUnit(unit_id1, 1)
+unit_stat2 = checkUnit(unit_id2, 2)
+unit_stat3 = checkUnit(unit_id3, 3)
+unit_stat4 = checkUnit(unit_id4, 4)
+unit_stat5 = checkUnit(unit_id5, 5)
+unit_stat6 = checkUnit(unit_id6, 6)
+
+-- Send 'Q' key after last unit check
+Vim:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
+task.wait(0.2)
+Vim:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
+
+_G["unit_id1"] = unit_id1
+_G["unit_id2"] = unit_id2
+_G["unit_id3"] = unit_id3
+_G["unit_id4"] = unit_id4
+_G["unit_id5"] = unit_id5
+_G["unit_id6"] = unit_id6
+
+_G["unit_stat1"] = unit_stat1
+_G["unit_stat2"] = unit_stat2
+_G["unit_stat3"] = unit_stat3
+_G["unit_stat4"] = unit_stat4
+_G["unit_stat5"] = unit_stat5
+_G["unit_stat6"] = unit_stat6
+
+
+print(unit_stat1, unit_stat2, unit_stat3, unit_stat4, unit_stat5, unit_stat6)
+
+
+
+
+
+
+-- detect which units it has and which strat to use
+
+
+-- Check for unit types
+local has_25, has_26 = false, false
+
+if unit_stat1 == 25 or unit_stat2 == 25 or unit_stat3 == 25 or unit_stat4 == 25 or unit_stat5 == 25 or unit_stat6 == 25 then
+    has_25 = true
+end
+
+if unit_stat1 == 26 or unit_stat2 == 26 or unit_stat3 == 26 or unit_stat4 == 26 or unit_stat5 == 26 or unit_stat6 == 26 then
+    has_26 = true
+end
+
+function waitForMatch()
+    while not workspace._waves_started.Value do
+        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("vote_start"):InvokeServer()
+        -- CRACH MAYBE
+        if (workspace._DATA.GameFinished.Value == true) then
+            return
+        end
+
+        
+
+        task.wait(2)
+
+    end
+end
+
+
+
+-- Execute based on conditions
+-- Version 1: Check if player is not alone in server before running any condition
+if #game.Players:GetPlayers() ~= 1 then 
+
+-- Execute based on conditions
+if has_25 and has_26 then
+    teleportToLanePart(2)
+    wait(1)
+    waitForMatch()
+
+    -- place ceo1,2,3 and bulma
+    waitForMoney(550)
+    placeUnit(26,3)
+    waitForMoney(550)
+    placeUnit(26,3)
+    waitForMoney(550)
+    placeUnit(26,3)
+    waitForMoney(800)
+    placeUnit(25,3)
+
+    -- upgrade ceo and bulma
+    waitForMoney(1000)
+    upgradeUnit("ceo1") 
+    waitForMoney(1000)
+    upgradeUnit("ceo2")
+    waitForMoney(1000)
+    upgradeUnit("ceo3")
+    
+    waitForMoney(1500)
+    upgradeUnit("bulma")
+    
+    waitForMoney(3000)
+    upgradeUnit("bulma")
+    
+    waitForMoney(1750)
+    upgradeUnit("ceo1")
+    waitForMoney(1750)
+    upgradeUnit("ceo2")
+    waitForMoney(1750)
+    upgradeUnit("ceo3")
+    
+    -- placing unit and farming again ~ round 5
+    waitForMoney(3000)
+    placeUnit(0,2)
+    
+    waitForMoney(2500)
+    upgradeUnit("ceo1")
+    waitForMoney(2500)
+    upgradeUnit("ceo2")
+    waitForMoney(2500)
+    upgradeUnit("ceo3")
+    
+    waitForMoney(3000)
+    placeUnit(0,2)
+
+    waitForMoney(4500)
+    upgradeUnit("bulma")
+    waitForMoney(7500)
+    upgradeUnit("bulma")
+    waitForMoney(10000)
+    upgradeUnit("bulma")
+
+    waitForMoney(3000)
+    upgradeUnit("ceo1")
+    waitForMoney(3000)
+    upgradeUnit("ceo2")
+    waitForMoney(3000)
+    upgradeUnit("ceo3")
+
+elseif has_26 then
+    teleportToLanePart(1)
+    wait(1)
+    waitForMatch()
+
+    -- place ceo1,2,3
+    waitForMoney(550)
+    placeUnit(26,3)
+    waitForMoney(550)
+    placeUnit(26,3)
+    waitForMoney(550)
+    placeUnit(26,3)
+
+    -- upgrade ceo
+    waitForMoney(1000)
+    upgradeUnit("ceo1") 
+    waitForMoney(1000)
+    upgradeUnit("ceo2")
+    waitForMoney(1000)
+    upgradeUnit("ceo3")
+    
+    waitForMoney(1750)
+    upgradeUnit("ceo1")
+    waitForMoney(1750)
+    upgradeUnit("ceo2")
+    waitForMoney(1750)
+    upgradeUnit("ceo3")
+    
+    waitForMoney(3000)
+    placeUnit(0,2)
+    
+    waitForMoney(2500)
+    upgradeUnit("ceo1")
+    waitForMoney(2500)
+    upgradeUnit("ceo2")
+    waitForMoney(2500)
+    upgradeUnit("ceo3")
+    
+    waitForMoney(3000)
+    placeUnit(0,2)
+
+    waitForMoney(3000)
+    upgradeUnit("ceo1")
+    waitForMoney(3000)
+    upgradeUnit("ceo2")
+    waitForMoney(3000)
+    upgradeUnit("ceo3")
+
+elseif has_25 then
+    teleportToLanePart(0)
+    wait(1)
+    waitForMatch()
+
+    -- place bulma
+    waitForMoney(800)
+    placeUnit(25,3)
+
+    waitForMoney(1500)
+    upgradeUnit("bulma")
+    waitForMoney(3000)
+    upgradeUnit("bulma")
+
+    waitForMoney(3000)
+    placeUnit(0,2)
+
+    waitForMoney(4500)
+    upgradeUnit("bulma")
+    waitForMoney(7500)
+    upgradeUnit("bulma")
+    waitForMoney(10000)
+    upgradeUnit("bulma")
+
+else
+    teleportToLanePart()
+    wait(1)
+    waitForMatch()
+	end
+end
+
+-- Version 2: Only Case Handling (Fixed if-elseif structure)
+if #game.Players:GetPlayers() == 1 then 
+    if has_25 and has_26 then
+        teleportToLanePart(2)
+        wait(1)
+        waitForMatch()
+        -- place ceo1,2,3 and bulma
+        waitForMoney(550)
+        placeUnit(26,2)
+        waitForMoney(550)
+        placeUnit(26,2)
+        waitForMoney(550)
+        placeUnit(26,2)
+        waitForMoney(800)
+        placeUnit(25,2)
+        
+        waitForMoney(1000)
+        upgradeUnit("ceo1")
+        waitForMoney(1000)
+        upgradeUnit("ceo2")
+    
+        waitForMoney(2500)
+        placeUnit(0,2)
+    
+        waitForMoney(1000)
+        upgradeUnit("ceo3")
+    
+        waitForMoney(1500)
+        upgradeUnit("bulma")
+    
+        waitForMoney(2500)
+        placeUnit(0,2)
+    
+        waitForMoney(1750)
+        upgradeUnit("ceo1")
+        waitForMoney(1750)
+        upgradeUnit("ceo2")
+    
+        waitForMoney(2500)
+        upgradeUnit("ceo1")
+        waitForMoney(2500)
+        upgradeUnit("ceo2")
+        waitForMoney(2500)
+        upgradeUnit("ceo3")
+    
+        waitForMoney(2500)
+        placeUnit(0,2)
+    
+        waitForMoney(3000)
+        upgradeUnit("bulma")
+        waitForMoney(4500)
+        upgradeUnit("bulma")
+    
+        waitForMoney(2500)
+        placeUnit(0,2)
+    
+        waitForMoney(7500)
+        upgradeUnit("bulma")
+    
+        waitForMoney(10000)
+        upgradeUnit("bulma")
+        
+        waitForMoney(3000)
+        upgradeUnit("ceo1")
+    
+        waitForMoney(3000)
+        upgradeUnit("ceo2")
+        
+        waitForMoney(2500)
+        upgradeUnit("ceo3")
+        
+        waitForMoney(3000)
+        upgradeUnit("ceo3")
+        
+    elseif has_26 then
+        teleportToLanePart(1)
+        wait(1)
+        waitForMatch()
+        
+        waitForMoney(550)
+        placeUnit(26,1)
+        waitForMoney(550)
+        placeUnit(26,1)
+        waitForMoney(550)
+        placeUnit(26,1)
+        waitForMoney(1000)
+        upgradeUnit("ceo1")
+        waitForMoney(1000)
+        upgradeUnit("ceo2")
+        waitForMoney(1000)
+        upgradeUnit("ceo3")
+        
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(1750)
+        upgradeUnit("ceo1")
+        waitForMoney(1750)
+        upgradeUnit("ceo2")
+        waitForMoney(1750)
+        upgradeUnit("ceo3")
+        
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(2500)
+        upgradeUnit("ceo1")
+        waitForMoney(2500)
+        upgradeUnit("ceo2")
+        waitForMoney(2500)
+        upgradeUnit("ceo3")
+        
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(3000)
+        upgradeUnit("ceo1")
+        waitForMoney(3000)
+        upgradeUnit("ceo2")
+        waitForMoney(3000)
+        upgradeUnit("ceo3")
+        
+    elseif has_25 then
+        teleportToLanePart(0)
+        wait(1)
+        waitForMatch()
+    
+        waitForMoney(800)
+        placeUnit(25,1)
+        
+        waitForMoney(1500)
+        upgradeUnit("bulma")
+    
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(3000)
+        upgradeUnit("bulma")
+        
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(4500)
+        upgradeUnit("bulma")
+        
+        waitForMoney(7500)
+        upgradeUnit("bulma")
+        
+        waitForMoney(2500)
+        placeUnit(0,3)
+        
+        waitForMoney(10000)
+        upgradeUnit("bulma")
+
+    else
+        teleportToLanePart()
+        wait(1)
+        waitForMatch()
+    end
+end
+
+
+
+while ( workspace._DATA.GameFinished.Value == false ) do
+    
+    placeUnit(0,2)
+    task.wait(5)
+    upgradeUnit()
+    task.wait(5)
+end
+
+--print("game is already done")
+
+wait(2)
+
+game:GetService("ReplicatedStorage").endpoints.client_to_server.teleport_back_to_lobby:InvokeServer()
