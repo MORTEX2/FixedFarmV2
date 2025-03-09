@@ -2,30 +2,14 @@ repeat wait() until game:GetService("Players").LocalPlayer.Character
 repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
 wait(5)
---print("spawn_units and island are now available, waited 5 seconds!")
+print("spawn_units and island are now available, waited 5 seconds!")
 
 
-    task.spawn(function()
-   --     loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/FAKE%20GUI%20LOG.lua", true))()
-
+   --[[ task.spawn(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/FAKE%20GUI%20LOG.lua", true))()
+fake gui 
     end)
-
-
-local function hideErrorMessage()
-    while true do
-        local errorGui = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MessageGui")
-        if errorGui and errorGui:FindFirstChild("messages") then
-            local errorMsg = errorGui.messages:FindFirstChild("Error")
-            if errorMsg then
-         --       errorMsg.Visible = false -- Hide the error message instead of destroying it
-            end
-        end
-        task.wait(0.2) -- Slight delay to prevent performance issues
-    end
-end
-
--- Run the function in a separate thread so it doesn't block execution
-task.spawn(hideErrorMessage)
+]]
 
 
 
