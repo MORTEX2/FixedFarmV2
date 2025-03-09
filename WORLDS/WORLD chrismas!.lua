@@ -1,3 +1,11 @@
+repeat wait() until game:IsLoaded()
+repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
+repeat wait() until game:GetService("Players").LocalPlayer.Character
+repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
+repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
+while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+wait(3)
+
 if queue_on_teleport then
     queue_on_teleport([[ 
         repeat wait() until game:IsLoaded()
@@ -6,6 +14,7 @@ if queue_on_teleport then
         repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
         repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+        wait(3)
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
