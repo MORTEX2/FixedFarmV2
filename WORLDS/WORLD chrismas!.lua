@@ -11,16 +11,20 @@ _G.itemsArray = _G.itemsArray or {} -- ✅ Ensure `_G.itemsArray` exists
 _G.skinsArray = _G.skinsArray or {} -- ✅ Ensure `_G.skinsArray` exists
 
 local HttpService = game:GetService("HttpService")
-local unitsArrayString = HttpService:JSONEncode(_G.unitsArray) -- ✅ Convert table to JSON string
-local itemsArrayString = HttpService:JSONEncode(_G.itemsArray) -- ✅ Convert table to JSON string
-local skinsArrayString = HttpService:JSONEncode(_G.skinsArray) -- ✅ Convert table to JSON string
+
+-- ✅ Convert all global tables to JSON strings
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
+local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
+local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") -- ✅ Restore units
-        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[") -- ✅ Restore items
-        _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[") -- ✅ Restore skins
+
+        -- ✅ Restore all global arrays after teleport
+        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[")
+        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[")
+        _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -30,9 +34,10 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
         wait(3)
 
-        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None") -- ✅ Debugging
-        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None") -- ✅ Debugging
-        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None") -- ✅ Debugging
+        -- ✅ Debugging to verify persistence after teleport
+        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
+        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
+        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
