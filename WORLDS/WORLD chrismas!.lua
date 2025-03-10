@@ -5,7 +5,7 @@ repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstCh
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
 while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
 wait(3)
-
+        _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it persists
 if queue_on_teleport then
     queue_on_teleport([[ 
         _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it persists
