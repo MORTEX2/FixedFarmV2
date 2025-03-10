@@ -7,11 +7,14 @@ while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
 wait(3)
 
 _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure `_G.unitsArray` exists
+local HttpService = game:GetService("HttpService")
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray) -- ✅ Convert table to a JSON string
 
 if queue_on_teleport then
     queue_on_teleport([[ 
-        _G.unitsArray = ]] .. game:GetService("HttpService"):JSONEncode(_G.unitsArray) .. [[ -- ✅ Convert to string to persist
-        
+        local HttpService = game:GetService("HttpService")
+        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") -- ✅ Decode back to table
+
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
         repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -20,15 +23,12 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
         wait(3)
 
-        -- ✅ Restore `_G.unitsArray` from serialized data
-        local HttpService = game:GetService("HttpService")
-        _G.unitsArray = HttpService:JSONDecode(_G.unitsArray) or {}
-
         print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None") -- ✅ Debugging
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
+
 
 
 
