@@ -8,6 +8,8 @@ wait(3)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
+        _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it persists
+
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
         repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -16,9 +18,12 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
         wait(3)
 
+        print("Restored Units:", table.concat(_G.unitsArray, ", ")) -- ✅ Debugging to check persistence
+
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
+
 
 task.spawn(function()
     repeat wait() until game:IsLoaded()
