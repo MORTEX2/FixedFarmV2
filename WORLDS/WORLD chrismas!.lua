@@ -6,10 +6,10 @@ repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("Playe
 while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
 wait(3)
 
-_G.unitsArray = _G.unitsArray or {} -- ✅ Always ensure it exists before teleport
-
 if queue_on_teleport then
     queue_on_teleport([[ 
+
+
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
         repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -18,13 +18,12 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
         wait(3)
 
-        _G.unitsArray = _G.unitsArray or {} -- ✅ Reassign to persist after teleport
-
-        print("Restored Units:", table.concat(_G.unitsArray, ", ")) -- ✅ Debugging
+        print("Restored Units:", table.concat(_G.unitsArray, ", ")) -- ✅ Debugging to check persistence
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
+
 
 task.spawn(function()
     repeat wait() until game:IsLoaded()
@@ -35,8 +34,6 @@ task.spawn(function()
 
     wait(5)
 
-    _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it exists every time this script runs
-
     local gui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
     local path = gui and gui:FindFirstChild("BattlePass") and gui.BattlePass.Main.Shop1.gift_premium_pass.BlackedOut
 
@@ -46,12 +43,18 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
-        local worlds = { "christmas_event" }
+
+
+        local worlds = {
+            "christmas_event",
+        }
+
         for _, world in ipairs(worlds) do
             local args = { [1] = world }
             game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_matchmaking"):InvokeServer(unpack(args))
             wait(1.5)
         end
+
     else
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
     end
