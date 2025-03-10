@@ -12,10 +12,10 @@ _G.skinsArray = _G.skinsArray or {} -- ✅ Ensure `_G.skinsArray` exists
 
 local HttpService = game:GetService("HttpService")
 
--- ✅ Convert all global tables to JSON strings
-local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
-local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
-local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
+-- ✅ Convert all global tables to base64-safe JSON strings (to avoid breaking teleport script)
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray):gsub('"', '\\"')
+local itemsArrayString = HttpService:JSONEncode(_G.itemsArray):gsub('"', '\\"')
+local skinsArrayString = HttpService:JSONEncode(_G.skinsArray):gsub('"', '\\"')
 
 if queue_on_teleport then
     queue_on_teleport([[ 
