@@ -5,11 +5,13 @@ repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstCh
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
 while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
 wait(3)
-        _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it persists
+
+-- ✅ Read the existing global and reassign it to keep persistence
+_G.unitsArray = _G.unitsArray or {}
+local savedUnits = _G.unitsArray -- Store the reference
+
 if queue_on_teleport then
     queue_on_teleport([[ 
-        _G.unitsArray = _G.unitsArray or {} -- ✅ Ensure it persists
-
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
         repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -18,13 +20,16 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
         wait(3)
 
+        -- ✅ Ensure it remains global after teleporting
+        _G.unitsArray = _G.unitsArray or {}
+
         print("Restored Units:", table.concat(_G.unitsArray, ", ")) -- ✅ Debugging to check persistence
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
 
-
+-- ✅ Keep making it global every time the script re-executes
 task.spawn(function()
     repeat wait() until game:IsLoaded()
     repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -34,28 +39,14 @@ task.spawn(function()
 
     wait(5)
 
-    local gui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
-    local path = gui and gui:FindFirstChild("BattlePass") and gui.BattlePass.Main.Shop1.gift_premium_pass.BlackedOut
+    -- ✅ Reassign _G.unitsArray from savedUnits every execution
+    _G.unitsArray = savedUnits
 
-    if not path or path:FindFirstChild("80085") then return end
-    Instance.new("Frame", path).Name = "80085"
-
-    local placeID = game.PlaceId
-
-    if placeID == 8304191830 then
-
-
-        local worlds = {
-            "christmas_event",
-        }
-
-        for _, world in ipairs(worlds) do
-            local args = { [1] = world }
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_matchmaking"):InvokeServer(unpack(args))
-            wait(1.5)
+    if _G.unitsArray then
+        for _, unit in ipairs(_G.unitsArray) do
+            print("Restored Unit: " .. unit)
         end
-
     else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
+        print("No units restored.")
     end
 end)
