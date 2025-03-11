@@ -11,21 +11,16 @@ _G.otherArray = _G.otherArray or {}
 _G.alsoArray = _G.alsoArray or {} 
 
 local HttpService = game:GetService("HttpService")
-local savedData = {
-    unitsArray = type(_G.unitsArray) == "table" and _G.unitsArray or {value = _G.unitsArray},
-    otherArray = type(_G.otherArray) == "table" and _G.otherArray or {value = _G.otherArray},
-    alsoArray = type(_G.alsoArray) == "table" and _G.alsoArray or {value = _G.alsoArray}
-}
-local savedDataString = HttpService:JSONEncode(savedData)
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
+local otherArrayString = HttpService:JSONEncode(_G.otherArray)
+local alsoArrayString = HttpService:JSONEncode(_G.alsoArray)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        local savedData = HttpService:JSONDecode("]] .. savedDataString .. [[") 
-
-        _G.unitsArray = savedData.unitsArray.value or savedData.unitsArray
-        _G.otherArray = savedData.otherArray.value or savedData.otherArray
-        _G.alsoArray = savedData.alsoArray.value or savedData.alsoArray
+        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") 
+        _G.otherArray = HttpService:JSONDecode("]] .. otherArrayString .. [[")
+        _G.alsoArray = HttpService:JSONDecode("]] .. alsoArrayString .. [[") 
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -35,14 +30,13 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end
         wait(3)
 
-        print("Restored Units:", _G.unitsArray)
-        print("Restored OtherArray:", _G.otherArray)
-        print("Restored AlsoArray:", _G.alsoArray)
+        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
+        print("Restored OtherArray:", next(_G.otherArray) and table.concat(_G.otherArray, ", ") or "None")
+        print("Restored AlsoArray:", next(_G.alsoArray) and table.concat(_G.alsoArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
-
 
 task.spawn(function()
     repeat wait() until game:IsLoaded()
