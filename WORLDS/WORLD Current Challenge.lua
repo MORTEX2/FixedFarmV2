@@ -51,29 +51,24 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
+        -- Join challenges normal
+        for i = 316, 319 do
+            local lobbyPath = workspace:WaitForChild("_CHALLENGES"):WaitForChild("Challenges"):FindFirstChild("_lobbytemplate" .. i)
 
+            if lobbyPath then -- Ensure the lobby exists
+                local playersFolder = lobbyPath:FindFirstChild("Players") -- Check if 'Players' exists
 
+                if playersFolder and #playersFolder:GetChildren() <= 3 then -- Ensure 'Players' exists and count its children safely
+                    local args = {
+                        [1] = "_lobbytemplate" .. i
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_join_lobby"):InvokeServer(unpack(args))
 
--- Join challenges normal
-for i = 316, 319 do
-    local lobbyPath = workspace:WaitForChild("_CHALLENGES"):WaitForChild("Challenges"):FindFirstChild("_lobbytemplate" .. i)
-
-    if lobbyPath then -- Ensure the lobby exists
-        local playersFolder = lobbyPath:FindFirstChild("Players") -- Check if 'Players' exists
-
-        if playersFolder and #playersFolder:GetChildren() <= 3 then -- Ensure 'Players' exists and count its children safely
-         --   print("Joining lobby:", "_lobbytemplate" .. i) -- Debugging print
-
-            -- Enter the lobby
-            local args = {
-                [1] = "_lobbytemplate" .. i
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_join_lobby"):InvokeServer(unpack(args))
-
-            break -- Stop checking after finding an empty lobby
+                    break -- Stop checking after finding an empty lobby
+                end
+            else
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
+            end
         end
-
-    else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
-    end
-end)
+    end -- ✅ Missing "end" fixed here
+end) -- ✅ Missing "end)" fixed here
