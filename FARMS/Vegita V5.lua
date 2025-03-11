@@ -2,7 +2,7 @@ repeat wait() until game:GetService("Players").LocalPlayer.Character
 repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
 wait(5)
---print("spawn_units and island are now available, waited 5 seconds!")
+print("spawn_units and island are now available, waited 5 seconds!")
 
 
    --[[ task.spawn(function()
