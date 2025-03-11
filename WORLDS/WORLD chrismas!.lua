@@ -31,8 +31,8 @@ if queue_on_teleport then
         wait(3)
 
         print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
-        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
-        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
+ --       print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
+     --   print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
