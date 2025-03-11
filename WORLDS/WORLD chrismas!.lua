@@ -11,12 +11,20 @@ _G.otherArray = _G.otherArray or {} -- ✅ Ensure _G.otherArray exists
 _G.alsoArray = _G.alsoArray or {}  -- ✅ Ensure _G.alsoArray exists
 
 local HttpService = game:GetService("HttpService")
-local unitsArrayString = HttpService:JSONEncode(_G.unitsArray) -- ✅ Convert table to a JSON string
+local savedData = {
+    unitsArray = _G.unitsArray,
+    otherArray = _G.otherArray,
+    alsoArray = _G.alsoArray
+}
+local savedDataString = HttpService:JSONEncode(savedData) -- ✅ Convert tables to a JSON string
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") -- ✅ Decode back to table
+        local savedData = HttpService:JSONDecode("]] .. savedDataString .. [[") -- ✅ Decode back to table
+        _G.unitsArray = savedData.unitsArray or {}
+        _G.otherArray = savedData.otherArray or {}
+        _G.alsoArray = savedData.alsoArray or {}
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -27,10 +35,13 @@ if queue_on_teleport then
         wait(3)
 
         print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None") -- ✅ Debugging
+        print("Restored OtherArray:", next(_G.otherArray) and table.concat(_G.otherArray, ", ") or "None")
+        print("Restored AlsoArray:", next(_G.alsoArray) and table.concat(_G.alsoArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
+
 
 
 
