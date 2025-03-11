@@ -6,7 +6,10 @@ repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("Playe
 while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
 wait(3)
 
-_G.unitsArray = _G.unitsArray or {} -- ✅ Ensure _G.unitsArray exists
+_G.unitsArray = _G.unitsArray or {} 
+_G.otherArray = _G.otherArray or {} -- ✅ Ensure _G.otherArray exists
+_G.alsoArray = _G.alsoArray or {}  -- ✅ Ensure _G.alsoArray exists
+
 local HttpService = game:GetService("HttpService")
 local unitsArrayString = HttpService:JSONEncode(_G.unitsArray) -- ✅ Convert table to a JSON string
 
