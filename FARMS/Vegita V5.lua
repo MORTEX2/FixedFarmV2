@@ -783,17 +783,16 @@ Vim:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
 task.wait(0.2)
 Vim:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
 
-for i = 1, #_G.unitsArray do
-    local statVar = "unit_stat" .. i
+for _, unitIndex in ipairs(_G.unitsArray) do
+    local statVar = "unit_stat" .. unitIndex
     print("Checking:", statVar, "Current Value:", _G[statVar])
 
-    if _G.unitsArray[i] == 1 then
-        if _G[statVar] == 1 then
-            print("Changing", statVar, "to 0")
-            _G[statVar] = 0
-        end
+    if _G[statVar] == 1 then
+        print("Changing", statVar, "to 0")
+        _G[statVar] = 0
     end
 end
+
 
 
 
