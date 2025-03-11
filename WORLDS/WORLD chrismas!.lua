@@ -1,4 +1,3 @@
-
 repeat wait() until game:IsLoaded()
 repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
 repeat wait() until game:GetService("Players").LocalPlayer.Character
@@ -54,3 +53,15 @@ task.spawn(function()
         local worlds = {
             "christmas_event",
         }
+
+        for _, world in ipairs(worlds) do
+            local args = { [1] = world }
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_matchmaking"):InvokeServer(unpack(args))
+            wait(1.5)
+        end
+
+    else
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
+    end
+end)
+
