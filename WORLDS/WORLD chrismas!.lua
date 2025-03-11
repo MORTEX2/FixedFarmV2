@@ -3,12 +3,12 @@ repeat wait() until game:GetService("Players") and game:GetService("Players").Lo
 repeat wait() until game:GetService("Players").LocalPlayer.Character
 repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+while not game.PlaceId do wait() end
 wait(3)
 
 _G.unitsArray = _G.unitsArray or {} 
-_G.otherArray = _G.otherArray or {} -- ✅ Ensure _G.otherArray exists
-_G.alsoArray = _G.alsoArray or {}  -- ✅ Ensure _G.alsoArray exists
+_G.otherArray = _G.otherArray or {} 
+_G.alsoArray = _G.alsoArray or {} 
 
 local HttpService = game:GetService("HttpService")
 local savedData = {
@@ -16,12 +16,12 @@ local savedData = {
     otherArray = _G.otherArray,
     alsoArray = _G.alsoArray
 }
-local savedDataString = HttpService:JSONEncode(savedData) -- ✅ Convert tables to a JSON string
+local savedDataString = HttpService:JSONEncode(savedData)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        local savedData = HttpService:JSONDecode("]] .. savedDataString .. [[") -- ✅ Decode back to table
+        local savedData = HttpService:JSONDecode("]] .. savedDataString .. [[") 
         _G.unitsArray = savedData.unitsArray or {}
         _G.otherArray = savedData.otherArray or {}
         _G.alsoArray = savedData.alsoArray or {}
@@ -31,10 +31,10 @@ if queue_on_teleport then
         repeat wait() until game:GetService("Players").LocalPlayer.Character
         repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
         repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-        while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+        while not game.PlaceId do wait() end
         wait(3)
 
-        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None") -- ✅ Debugging
+        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
         print("Restored OtherArray:", next(_G.otherArray) and table.concat(_G.otherArray, ", ") or "None")
         print("Restored AlsoArray:", next(_G.alsoArray) and table.concat(_G.alsoArray, ", ") or "None")
 
@@ -42,16 +42,12 @@ if queue_on_teleport then
     ]])
 end
 
-
-
-
-
 task.spawn(function()
     repeat wait() until game:IsLoaded()
     repeat wait() until game:GetService("Players").LocalPlayer.Character
     repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
     repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-    while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+    while not game.PlaceId do wait() end
 
     wait(5)
 
