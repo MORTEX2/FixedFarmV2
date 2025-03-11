@@ -778,30 +778,24 @@ unit_stat4 = checkUnit(unit_id4, 4)
 unit_stat5 = checkUnit(unit_id5, 5)
 unit_stat6 = checkUnit(unit_id6, 6)
 
--- Assign unit stats to global variables
-_G["unit_stat1"] = checkUnit(unit_id1, 1)
-_G["unit_stat2"] = checkUnit(unit_id2, 2)
-_G["unit_stat3"] = checkUnit(unit_id3, 3)
-_G["unit_stat4"] = checkUnit(unit_id4, 4)
-_G["unit_stat5"] = checkUnit(unit_id5, 5)
-_G["unit_stat6"] = checkUnit(unit_id6, 6)
-
 -- Send 'Q' key after last unit check
 Vim:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
 task.wait(0.2)
 Vim:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
 
--- Now modify the global unit stats
-for _, value in ipairs(_G.unitsArray) do
-    if value >= 1 and value <= 6 then
-        local statVar = "unit_stat" .. value
-        if _G[statVar] == 1 then
-            _G[statVar] = 0
+for _, unit in ipairs(_G.unitsArray) do
+    for key, value in pairs(unit) do
+        if string.match(key, "^unit_stat(%d+)$") then
+            if value == 1 then
+                unit[key] = 0
+            end
         end
     end
 end
 
--- Store unit IDs globally
+
+
+
 _G["unit_id1"] = unit_id1
 _G["unit_id2"] = unit_id2
 _G["unit_id3"] = unit_id3
@@ -809,7 +803,15 @@ _G["unit_id4"] = unit_id4
 _G["unit_id5"] = unit_id5
 _G["unit_id6"] = unit_id6
 
-print(_G.unit_stat1, _G.unit_stat2, _G.unit_stat3, _G.unit_stat4, _G.unit_stat5, _G.unit_stat6)
+_G["unit_stat1"] = unit_stat1
+_G["unit_stat2"] = unit_stat2
+_G["unit_stat3"] = unit_stat3
+_G["unit_stat4"] = unit_stat4
+_G["unit_stat5"] = unit_stat5
+_G["unit_stat6"] = unit_stat6
+
+
+--print(unit_stat1, unit_stat2, unit_stat3, unit_stat4, unit_stat5, unit_stat6)
 
 
 
