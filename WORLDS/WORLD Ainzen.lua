@@ -3,11 +3,25 @@ repeat wait() until game:GetService("Players") and game:GetService("Players").Lo
 repeat wait() until game:GetService("Players").LocalPlayer.Character
 repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
 repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+while not game.PlaceId do wait() end
 wait(3)
+
+_G.unitsArray = _G.unitsArray or {}
+_G.itemsArray = _G.itemsArray or {}
+_G.skinsArray = _G.skinsArray or {}
+
+local HttpService = game:GetService("HttpService")
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
+local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
+local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
+        local HttpService = game:GetService("HttpService")
+        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[")
+        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[")
+        _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
+
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
         repeat wait() until game:GetService("Players").LocalPlayer.Character
