@@ -7,20 +7,20 @@ while not game.PlaceId do wait() end
 wait(3)
 
 _G.unitsArray = _G.unitsArray or {} 
-_G.otherArray = _G.otherArray or {} 
-_G.alsoArray = _G.alsoArray or {} 
+_G.skinsArray = _G.skinsArray or {} 
+_G.itemsArray = _G.itemsArray or {} 
 
 local HttpService = game:GetService("HttpService")
 local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
-local otherArrayString = HttpService:JSONEncode(_G.otherArray)
-local alsoArrayString = HttpService:JSONEncode(_G.alsoArray)
+local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
+local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
         _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") 
-        _G.otherArray = HttpService:JSONDecode("]] .. otherArrayString .. [[")
-        _G.alsoArray = HttpService:JSONDecode("]] .. alsoArrayString .. [[") 
+        _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
+        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[") 
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -31,8 +31,8 @@ if queue_on_teleport then
         wait(3)
 
         print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
-        print("Restored OtherArray:", next(_G.otherArray) and table.concat(_G.otherArray, ", ") or "None")
-        print("Restored AlsoArray:", next(_G.alsoArray) and table.concat(_G.alsoArray, ", ") or "None")
+        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
+        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
