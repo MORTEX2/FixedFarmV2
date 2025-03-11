@@ -783,15 +783,12 @@ Vim:SendKeyEvent(true, Enum.KeyCode.Q, false, game)
 task.wait(0.2)
 Vim:SendKeyEvent(false, Enum.KeyCode.Q, false, game)
 
-for _, unit in ipairs(_G.unitsArray) do
-    for key, value in pairs(unit) do
-        if string.match(key, "^unit_stat(%d+)$") then
-            if value == 1 then
-                unit[key] = 0
-            end
-        end
+for i = 1, 6 do
+    if _G.unitsArray[i] == 1 then
+        _G["unit_stat" .. i] = 0
     end
 end
+
 
 
 
