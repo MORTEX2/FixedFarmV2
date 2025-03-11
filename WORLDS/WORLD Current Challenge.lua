@@ -27,7 +27,7 @@ if queue_on_teleport then
         repeat wait() until game:GetService("Players").LocalPlayer.Character
         repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
         repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-        while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+        while not game.PlaceId do wait() end
         wait(3)
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20Current%20Challenge.lua", true))()
     ]])
@@ -38,7 +38,7 @@ task.spawn(function()
     repeat wait() until game:GetService("Players").LocalPlayer.Character
     repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid")
     repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
-    while not game.PlaceId do wait() end -- ✅ Ensure PlaceId is loaded
+    while not game.PlaceId do wait() end
 
     wait(5)
 
@@ -51,24 +51,22 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
-        -- Join challenges normal
         for i = 316, 319 do
             local lobbyPath = workspace:WaitForChild("_CHALLENGES"):WaitForChild("Challenges"):FindFirstChild("_lobbytemplate" .. i)
 
-            if lobbyPath then -- Ensure the lobby exists
-                local playersFolder = lobbyPath:FindFirstChild("Players") -- Check if 'Players' exists
+            if lobbyPath then
+                local playersFolder = lobbyPath:FindFirstChild("Players")
 
-                if playersFolder and #playersFolder:GetChildren() <= 3 then -- Ensure 'Players' exists and count its children safely
+                if playersFolder and #playersFolder:GetChildren() <= 3 then
                     local args = {
                         [1] = "_lobbytemplate" .. i
                     }
                     game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_join_lobby"):InvokeServer(unpack(args))
-
-                    break -- Stop checking after finding an empty lobby
+                    break
                 end
-            else
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
             end
         end
-    end -- ✅ Missing "end" fixed here
-end) -- ✅ Missing "end)" fixed here
+    else
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
+    end
+end)
