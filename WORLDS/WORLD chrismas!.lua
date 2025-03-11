@@ -11,14 +11,14 @@ _G.itemsArray = _G.itemsArray or {}
 _G.skinsArray = _G.skinsArray or {}
 
 local HttpService = game:GetService("HttpService")
-local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
+local unitsArrayString = HttpService:JSONEncode(_G.unitsArray):gsub("\\", "\\\\"):gsub("\"", "\\\"")
 local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
 local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
 
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[")
+        _G.unitsArray = HttpService:JSONDecode([["]] .. unitsArrayString .. [["]])
         _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[")
         _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
 
