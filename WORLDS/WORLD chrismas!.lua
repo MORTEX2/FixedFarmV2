@@ -11,17 +11,16 @@ _G.itemsArray = _G.itemsArray or {}
 _G.skinsArray = _G.skinsArray or {}
 
 local HttpService = game:GetService("HttpService")
-
 local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
 local itemsArrayString = HttpService:JSONEncode(_G.itemsArray)
 local skinsArrayString = HttpService:JSONEncode(_G.skinsArray)
 
 if queue_on_teleport then
-    local teleportScript = string.format([[
+    queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        _G.unitsArray = HttpService:JSONDecode(%q)
-        _G.itemsArray = HttpService:JSONDecode(%q)
-        _G.skinsArray = HttpService:JSONDecode(%q)
+        _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[")
+        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[")
+        _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -36,9 +35,7 @@ if queue_on_teleport then
         print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
-    ]], unitsArrayString, itemsArrayString, skinsArrayString)
-
-    queue_on_teleport(teleportScript)
+    ]])
 end
 
 task.spawn(function()
@@ -68,6 +65,7 @@ task.spawn(function()
             game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_matchmaking"):InvokeServer(unpack(args))
             wait(1.5)
         end
+
     else
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/FARMS/Vegita%20V5.lua", true))()
     end
