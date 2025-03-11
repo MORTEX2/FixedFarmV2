@@ -30,10 +30,6 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end
         wait(3)
 
-        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
-        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
-        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
-
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
 end
@@ -56,6 +52,95 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
+
+
+
+
+
+
+
+
+
+
+
+
+_G.itemsArray = _G.itemsArray or {} -- ✅ Ensure global storage for regular items
+_G.skinsArray = _G.skinsArray or {} -- ✅ Ensure global storage for skins
+
+
+local function AddAllItemsToArray()
+    local FXCache = game:GetService("ReplicatedStorage"):FindFirstChild("_FX_CACHE")
+    if not FXCache then return end
+
+    _G.itemsArray = {} -- ✅ Reset items array
+    _G.skinsArray = {} -- ✅ Reset skins array
+
+    for _, item in pairs(FXCache:GetChildren()) do
+        if item.Name ~= "CollectionUnitFrame" then  
+            local ownedAmountObj = item:FindFirstChild("OwnedAmount")
+            local displayNameObj = item:FindFirstChild("name") -- ✅ Get visible name
+            
+            if ownedAmountObj and ownedAmountObj:IsA("TextLabel") and displayNameObj and displayNameObj:IsA("TextLabel") then
+                local ownedAmountText = ownedAmountObj.Text -- ✅ e.g., "x5"
+                local displayName = displayNameObj.Text -- ✅ UI name
+                local originalName = item.Name -- ✅ Folder name (for tooltip)
+
+                -- ✅ Determine if it's a skin
+                local isSkin = string.match(originalName:lower(), "_skin") ~= nil
+
+                -- ✅ Store the item in the appropriate global array
+                if isSkin then
+                    table.insert(_G.skinsArray, {
+                        displayName = displayName,
+                        ownedAmount = ownedAmountText,
+                        originalName = originalName
+                    })
+                else
+                    table.insert(_G.itemsArray, {
+                        displayName = displayName,
+                        ownedAmount = ownedAmountText,
+                        originalName = originalName
+                    })
+                end
+            end
+        end
+    end
+end
+
+AddAllItemsToArray()
+
+local function formatArrayContents(array)
+    local result = {}
+    for _, item in ipairs(array) do
+        table.insert(result, item.displayName .. " (" .. item.ownedAmount .. ")")
+    end
+    return table.concat(result, ", ")
+end
+
+print("Items:", formatArrayContents(_G.itemsArray))
+print("Skins:", formatArrayContents(_G.skinsArray))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         local worlds = {
             "christmas_event",
         }
