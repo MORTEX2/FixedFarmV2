@@ -804,23 +804,26 @@ _G["unit_stat6"] = unit_stat6
 
 for _, unitIndex in ipairs(_G.unitsArray) do
     local statVar = "unit_stat" .. unitIndex
-    print("Checking:", statVar, "Current Value:", _G[statVar])
+  --  print("Checking:", statVar, "Current Value:", _G[statVar])
 
     if _G[statVar] == 1 then
-        print("Changing", statVar, "to 0")
+  --      print("Changing", statVar, "to 0")
         _G[statVar] = 0
     end
 end
 
-print(unit_stat1, unit_stat2, unit_stat3, unit_stat4, unit_stat5, unit_stat6)
+--print(unit_stat1, unit_stat2, unit_stat3, unit_stat4, unit_stat5, unit_stat6) OUTDATED PRINT
 
+--print(
+ --   _G["unit_stat1"], _G["unit_stat2"], _G["unit_stat3"], 
+ --   _G["unit_stat4"], _G["unit_stat5"], _G["unit_stat6"]
+--)
 
 
 
 
 
 -- detect which units it has and which strat to use
-
 
 -- Check for unit types
 local has_25, has_26 = false, false
