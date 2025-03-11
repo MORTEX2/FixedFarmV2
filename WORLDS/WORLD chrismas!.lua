@@ -56,7 +56,6 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
-
         local worlds = {
             "christmas_event",
         }
