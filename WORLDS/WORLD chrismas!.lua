@@ -56,6 +56,59 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
+
+
+
+            _G.itemsArray = _G.itemsArray or {} -- ✅ Ensure global storage for regular items
+_G.skinsArray = _G.skinsArray or {} -- ✅ Ensure global storage for skins
+
+
+local function AddAllItemsToArray()
+    local FXCache = game:GetService("ReplicatedStorage"):FindFirstChild("_FX_CACHE")
+    if not FXCache then return end
+
+    _G.itemsArray = {} -- ✅ Reset items array
+    _G.skinsArray = {} -- ✅ Reset skins array
+
+    for _, item in pairs(FXCache:GetChildren()) do
+        if item.Name ~= "CollectionUnitFrame" then  
+            local ownedAmountObj = item:FindFirstChild("OwnedAmount")
+            local displayNameObj = item:FindFirstChild("name") -- ✅ Get visible name
+            
+            if ownedAmountObj and ownedAmountObj:IsA("TextLabel") and displayNameObj and displayNameObj:IsA("TextLabel") then
+                local ownedAmountText = ownedAmountObj.Text -- ✅ e.g., "x5"
+                local displayName = displayNameObj.Text -- ✅ UI name
+                local originalName = item.Name -- ✅ Folder name (for tooltip)
+
+                -- ✅ Determine if it's a skin
+                local isSkin = string.match(originalName:lower(), "_skin") ~= nil
+
+                -- ✅ Store the item in the appropriate global array
+                if isSkin then
+                    table.insert(_G.skinsArray, {
+                        displayName = displayName,
+                        ownedAmount = ownedAmountText,
+                        originalName = originalName
+                    })
+                else
+                    table.insert(_G.itemsArray, {
+                        displayName = displayName,
+                        ownedAmount = ownedAmountText,
+                        originalName = originalName
+                    })
+                end
+            end
+        end
+    end
+end
+
+AddAllItemsToArray()
+
+            
+            
+            
+            
+            
         local worlds = {
             "christmas_event",
         }
