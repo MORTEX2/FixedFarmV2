@@ -832,7 +832,7 @@ Padding.Parent = WorldsFrame
 
 -- Worlds
 
-local LockedWorlds = {3} -- Worlds that should be locked
+local LockedWorlds = {} -- Worlds that should be locked
 
 local Worlds = {
     {Name = "Ainz", Desc = "Farm till you have 40 of each ring", Tag = "DUNGEON Throne", BorderColor = Color3.fromRGB(255, 40, 25), ID = 1}, -- red
