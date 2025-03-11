@@ -18,10 +18,13 @@ local savedData = {
 }
 local savedDataString = HttpService:JSONEncode(savedData)
 
+-- ✅ Escape quotes inside JSON string
+savedDataString = savedDataString:gsub("\\", "\\\\"):gsub("\"", "\\\"")
+
 if queue_on_teleport then
     queue_on_teleport([[ 
         local HttpService = game:GetService("HttpService")
-        local savedData = HttpService:JSONDecode("]] .. savedDataString:gsub('"', '\\"') .. [[") 
+        local savedData = HttpService:JSONDecode("]] .. savedDataString .. [[") 
 
         _G.unitsArray = savedData.unitsArray or {}
         _G.skinsArray = savedData.skinsArray or {}
@@ -35,9 +38,9 @@ if queue_on_teleport then
         while not game.PlaceId do wait() end
         wait(3)
 
-        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
-     --   print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
-    --    print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
+      --  print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
+      --  print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
+     --   print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
