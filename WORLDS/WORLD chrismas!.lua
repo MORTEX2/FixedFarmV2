@@ -6,13 +6,9 @@ repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("Playe
 while not game.PlaceId do wait() end
 wait(3)
 
-local inMatch = game.PlaceId ~= 8304191830
-
-if not inMatch then
-    _G.unitsArray = _G.unitsArray or {}
-    _G.skinsArray = _G.skinsArray or {}
-    _G.itemsArray = _G.itemsArray or {}
-end
+_G.unitsArray = _G.unitsArray or {}
+_G.skinsArray = _G.skinsArray or {}
+_G.itemsArray = _G.itemsArray or {}
 
 local HttpService = game:GetService("HttpService")
 local unitsArrayString = HttpService:JSONEncode(_G.unitsArray)
@@ -24,7 +20,7 @@ if queue_on_teleport then
         local HttpService = game:GetService("HttpService")
         _G.unitsArray = HttpService:JSONDecode("]] .. unitsArrayString .. [[") 
         _G.skinsArray = HttpService:JSONDecode("]] .. skinsArrayString .. [[")
-        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[") 
+        _G.itemsArray = HttpService:JSONDecode("]] .. itemsArrayString .. [[")
 
         repeat wait() until game:IsLoaded()
         repeat wait() until game:GetService("Players") and game:GetService("Players").LocalPlayer
@@ -33,6 +29,10 @@ if queue_on_teleport then
         repeat wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui"):FindFirstChild("spawn_units")
         while not game.PlaceId do wait() end
         wait(3)
+
+        print("Restored Units:", next(_G.unitsArray) and table.concat(_G.unitsArray, ", ") or "None")
+        print("Restored Skins:", next(_G.skinsArray) and table.concat(_G.skinsArray, ", ") or "None")
+        print("Restored Items:", next(_G.itemsArray) and table.concat(_G.itemsArray, ", ") or "None")
 
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MORTEX2/FixedFarmV2/main/WORLDS/WORLD%20chrismas!.lua", true))()
     ]])
@@ -56,19 +56,15 @@ task.spawn(function()
     local placeID = game.PlaceId
 
     if placeID == 8304191830 then
-        if not inMatch then
-            _G.itemsArray = _G.itemsArray or {}
-            _G.skinsArray = _G.skinsArray or {}
-        end
+        _G.itemsArray = _G.itemsArray or {}
+        _G.skinsArray = _G.skinsArray or {}
 
         local function AddAllItemsToArray()
             local FXCache = game:GetService("ReplicatedStorage"):FindFirstChild("_FX_CACHE")
             if not FXCache then return end
 
-            if not inMatch then
-                _G.itemsArray = {}
-                _G.skinsArray = {}
-            end
+            _G.itemsArray = {}
+            _G.skinsArray = {}
 
             for _, item in pairs(FXCache:GetChildren()) do
                 if item.Name ~= "CollectionUnitFrame" then  
